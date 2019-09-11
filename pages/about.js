@@ -1,6 +1,6 @@
-import React from 'react'
-import Head from 'next/head'
-import Nav from '../components/nav'
+import React from 'react';
+import Head from 'next/head';
+import Nav from '../components/nav';
 
 
 const Home = () => (
@@ -10,7 +10,7 @@ const Home = () => (
     </Head>
 
     <Nav />
-    </div>
-)
+  </div>
+);
 
-export default Home
+export default Home;
