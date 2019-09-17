@@ -1,14 +1,15 @@
 import React from 'react';
 import Head from 'next/head';
-import Nav from '../components/nav';
+import Layout from '../components/layout';
 
 const Home = () => (
   <div>
     <Head>
       <title>Home</title>
     </Head>
-
-    <Nav />
+    <Layout>
+      <h1>Hello world</h1>
+    </Layout>
   </div>
 );
 

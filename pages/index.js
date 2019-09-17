@@ -1,35 +1,66 @@
 import React from 'react';
-import Layout from '../components/layout';
+import {
+  Container, Row
+} from 'reactstrap';
+import Layout from '../components/Layout';
+import DealerCard from '../components/DealerCard';
+import Footer from '../components/Footer';
+import { services } from '../constants/services';
+
 
 const Home = () => (
   <Layout>
-    <div className="hero">
-      <h1 className="title">Welcome to Next.js!</h1>
-      <p className="description">
-        To get started, edit <code>pages/index.js</code> and save to reload.
-      </p>
+    <Container>
+      <div className="hero">
+        <div className="ricardo">
+          <Container>
+            <h1 className="title">Rent-Car </h1>
+            <p className="description">
+              A simple way to rent your dreamed car and enjoy it.
+            </p>
+            {/* <img src="https://demo.quape.com/popularcars/wp-content/uploads/2017/09/3-cars.png" alt="cars" className="img-fluid" /> */}
+          </Container>
+        </div>
+        <Container>
+          {services.map((service) => (
+            <Row>
+              {service.map((el) => <DealerCard link={el.url} title={el.title} image={el.image} />)}
+            </Row>
+          ))}
+          <Footer />
+        </Container>
 
-      <style jsx>{`
-      .hero {
-        width: 100%;
-        color: #333;
-      }
-      .title {
-        margin: 0;
-        width: 100%;
-        padding-top: 80px;
-        line-height: 1.15;
-        font-size: 48px;
-      }
-      .title,
-      .description {
-        text-align: center;
-      }
-    `}
-      </style>
-    </div>
+        <style jsx>{`
+          html {
+          }
+          .ricardo {
+            background: url('https://demo.quape.com/popularcars/wp-content/uploads/2017/09/3-cars.png');
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: 60vh;
+          }
+          .hero {
+            width: 100%;
+            color: #333;
+          }
+          .title {
+            margin: 0;
+            width: 100%;
+            padding-top: 50px;
+            line-height: 1.15;
+            font-size: 48px;
+          }
+          .title,
+          .description {
+            text-align: center;
+          }
+        `}
+        </style>
+      </div>
+    </Container>
   </Layout>
 
 );
+
 
 export default Home;
