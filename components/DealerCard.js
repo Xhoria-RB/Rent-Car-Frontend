@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Link from 'next/link';
 import {
   Card, CardHeader, Col, CardBody
@@ -18,5 +19,11 @@ const DealerCard = ({ link, title, image }) => (
     </Link>
   </Col>
 );
+
+DealerCard.propTypes = {
+  link: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  image: PropTypes.string.isRequired
+};
 
 export default DealerCard;
