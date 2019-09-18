@@ -10,11 +10,12 @@ import {
   UncontrolledDropdown,
   DropdownToggle,
   DropdownMenu,
-  DropdownItem,
   Container
 } from 'reactstrap';
+import NavItems from './NavItems';
+import { navItems } from '../utils/constants';
 
-function nav() {
+const nav = () => {
   const [isOpen, toggle] = useState(false);
   return (
     <div>
@@ -29,23 +30,9 @@ function nav() {
                   Services
                 </DropdownToggle>
                 <DropdownMenu right>
-                  <DropdownItem>
-                    <NavItem>
-                      <NavLink href="/rent">Rents</NavLink>
-                    </NavItem>
-                  </DropdownItem>
-                  <DropdownItem divider />
-                  <DropdownItem>
-                    <NavItem>
-                      <NavLink href="/return">Return a car</NavLink>
-                    </NavItem>
-                  </DropdownItem>
-                  <DropdownItem divider />
-                  <DropdownItem>
-                    <NavItem>
-                      <NavLink href="/inspection">Inspections</NavLink>
-                    </NavItem>
-                  </DropdownItem>
+                  {navItems[0].map((item) => (
+                    <NavItems key={item.title} title={item.title} url={item.url} />
+                  ))}
                 </DropdownMenu>
               </UncontrolledDropdown>
               <UncontrolledDropdown nav inNavbar>
@@ -53,35 +40,9 @@ function nav() {
                   Products
                 </DropdownToggle>
                 <DropdownMenu right>
-                  <DropdownItem>
-                    <NavItem>
-                      <NavLink href="/brand">Brands</NavLink>
-                    </NavItem>
-                  </DropdownItem>
-                  <DropdownItem divider />
-                  <DropdownItem>
-                    <NavItem>
-                      <NavLink href="/car">Cars</NavLink>
-                    </NavItem>
-                  </DropdownItem>
-                  <DropdownItem divider />
-                  <DropdownItem>
-                    <NavItem>
-                      <NavLink href="/car_type">Car Types</NavLink>
-                    </NavItem>
-                  </DropdownItem>
-                  <DropdownItem divider />
-                  <DropdownItem>
-                    <NavItem>
-                      <NavLink href="/fuel_type">Fuel Tupes</NavLink>
-                    </NavItem>
-                  </DropdownItem>
-                  <DropdownItem divider />
-                  <DropdownItem>
-                    <NavItem>
-                      <NavLink href="/model">Models</NavLink>
-                    </NavItem>
-                  </DropdownItem>
+                  {navItems[1].map((item) => (
+                    <NavItems key={item.title} title={item.title} url={item.url} />
+                  ))}
                 </DropdownMenu>
               </UncontrolledDropdown>
               <UncontrolledDropdown nav inNavbar>
@@ -89,33 +50,19 @@ function nav() {
                   About us
                 </DropdownToggle>
                 <DropdownMenu right>
-                  <DropdownItem>
-                    <NavItem>
-                      <NavLink href="/about">Who we are</NavLink>
-                    </NavItem>
-                  </DropdownItem>
-                  <DropdownItem divider />
-                  <DropdownItem>
-                    <NavItem>
-                      <NavLink href="/contact">Contact us</NavLink>
-                    </NavItem>
-                  </DropdownItem>
-                  <DropdownItem divider />
-                  <DropdownItem>
-                    <NavItem>
-                      <NavLink href="/employee">Employees</NavLink>
-                    </NavItem>
-                  </DropdownItem>
+                  {navItems[2].map((item) => (
+                    <NavItems key={item.title} title={item.title} url={item.url} />
+                  ))}
                 </DropdownMenu>
               </UncontrolledDropdown>
+              <NavItem>
+                <NavLink href="/report">Reports</NavLink>
+              </NavItem>
               <NavItem>
                 <NavLink href="/login">Login</NavLink>
               </NavItem>
               <NavItem>
                 <NavLink href="/signin">Sign In</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink href="https://github.com/reactstrap/reactstrap">GitHub</NavLink>
               </NavItem>
             </Nav>
           </Collapse>
@@ -123,5 +70,5 @@ function nav() {
       </Navbar>
     </div>
   );
-}
+};
 export default nav;

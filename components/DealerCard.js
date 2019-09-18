@@ -8,11 +8,11 @@ import {
 const DealerCard = ({ link, title, image }) => (
   <Col xs="3">
     <Link href={link}>
-      <Card className="my-3">
+      <Card className="my-3" style={{ maxHeight: '200px', overflow: 'hidden' }}>
         <center>
           <CardHeader>{title}</CardHeader>
           <CardBody>
-            <img width="20%" src={image} alt="Card cars" className="img-fluid" />
+            <img width="50%" src={image} alt="Card cars" className="img-fluid" style={{ objectFit: 'contain' }} />
           </CardBody>
         </center>
       </Card>
