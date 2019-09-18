@@ -1,58 +1,72 @@
-import React from 'react';
-import Link from 'next/link';
+import React, { useState } from 'react';
+import {
+  Collapse,
+  Navbar,
+  NavbarToggler,
+  NavbarBrand,
+  Nav,
+  NavItem,
+  NavLink,
+  UncontrolledDropdown,
+  DropdownToggle,
+  DropdownMenu,
+  Container
+} from 'reactstrap';
+import NavItems from './NavItems';
+import { navItems } from '../utils/constants';
 
-const links = [
-  { href: 'https://zeit.co/now', label: 'ZEIT' },
-  { href: 'https://github.com/zeit/next.js', label: 'GitHub' }
-].map((link) => {
-  // eslint-disable-next-line no-param-reassign
-  link.key = `nav-link-${link.href}-${link.label}`;
-  return link;
-});
-
-const Nav = () => (
-  <nav>
-    <ul>
-      <li>
-        <Link href="/">
-          Home
-        </Link>
-      </li>
-      {links.map(({ key, href, label }) => (
-        <li key={key}>
-          <a href={href}>{label}</a>
-        </li>
-      ))}
-    </ul>
-
-    <style jsx>{`
-      :global(body) {
-        margin: 0;
-        font-family: -apple-system, BlinkMacSystemFont, Avenir Next, Avenir,
-          Helvetica, sans-serif;
-      }
-      nav {
-        text-align: center;
-      }
-      ul {
-        display: flex;
-        justify-content: space-between;
-      }
-      nav > ul {
-        padding: 4px 16px;
-      }
-      li {
-        display: flex;
-        padding: 6px 8px;
-      }
-      a {
-        color: #067df7;
-        text-decoration: none;
-        font-size: 13px;
-      }
-    `}
-    </style>
-  </nav>
-);
-
-export default Nav;
+const nav = () => {
+  const [isOpen, toggle] = useState(false);
+  return (
+    <Navbar color="light" light expand="md">
+      <Container>
+        <NavbarBrand href="/">Rent-Car</NavbarBrand>
+        <NavbarToggler onClick={() => toggle(!isOpen)} />
+        <Collapse isOpen={isOpen} navbar>
+          <Nav className="ml-auto" navbar>
+            <UncontrolledDropdown nav inNavbar>
+              <DropdownToggle nav caret>
+                Services
+              </DropdownToggle>
+              <DropdownMenu right>
+                {navItems[0].map((item) => (
+                  <NavItems key={item.title} title={item.title} url={item.url} />
+                ))}
+              </DropdownMenu>
+            </UncontrolledDropdown>
+            <UncontrolledDropdown nav inNavbar>
+              <DropdownToggle nav caret>
+                Products
+              </DropdownToggle>
+              <DropdownMenu right>
+                {navItems[1].map((item) => (
+                  <NavItems key={item.title} title={item.title} url={item.url} />
+                ))}
+              </DropdownMenu>
+            </UncontrolledDropdown>
+            <UncontrolledDropdown nav inNavbar>
+              <DropdownToggle nav caret>
+                About us
+              </DropdownToggle>
+              <DropdownMenu right>
+                {navItems[2].map((item) => (
+                  <NavItems key={item.title} title={item.title} url={item.url} />
+                ))}
+              </DropdownMenu>
+            </UncontrolledDropdown>
+            <NavItem>
+              <NavLink href="/report">Reports</NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink href="/login">Login</NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink href="/signin">Sign In</NavLink>
+            </NavItem>
+          </Nav>
+        </Collapse>
+      </Container>
+    </Navbar>
+  );
+};
+export default nav;
