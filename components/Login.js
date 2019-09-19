@@ -22,7 +22,7 @@ const Login = () => {
         }
       })
       .catch((err) => {
-        setErrors({ error: err.response.data.error });
+        setErrors({ ...errors, error: err.response.data.error });
         setIsOpen(!isOpen);
         console.log(errors);
       });
