@@ -4,6 +4,9 @@ import {
   Form, FormGroup, Label, Input
 } from 'reactstrap';
 import axios from 'axios';
+import Cookie from 'js-cookie';
+import parseCookies from './lib/parseCookies';
+import { url } from '../utils/config';
 import ErrorMessage from './ErrorMessage';
 
 const Login = () => {
@@ -14,11 +17,12 @@ const Login = () => {
     'Content-Type': 'application/json'
   };
   const logRequest = () => {
-    axios.post('http://localhost:8000/auth/login', { ...user }, { headers })
-      .then((data) => {
-        if (data.status === 200) {
+    axios.post(`${url}/auth/login`, { ...user }, { headers })
+      .then((res) => {
+        if (res.status === 200) {
+          const { data } = res;
           setIsOpen(!isOpen);
-          alert('Logged In');
+          Cookie.set('user', data);
         }
       })
       .catch((err) => {
@@ -67,6 +71,13 @@ const Login = () => {
       </Modal>
     </div>
   );
+};
+
+Login.getInitialProps = ({ req }) => {
+  const cookies = parseCookies(req);
+  return {
+    initialCookieValue: cookies.user
+  };
 };
 
 export default Login;
