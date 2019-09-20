@@ -4,12 +4,12 @@ import {
   Form, FormGroup, Label, Input
 } from 'reactstrap';
 import axios from 'axios';
-
+import ErrorMessage from './ErrorMessage';
 
 const Login = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [user, setUser] = useState({});
-  const [errors, setErrors] = useState({});
+  const [errors, setErrors] = useState([]);
   const headers = {
     'Content-Type': 'application/json'
   };
@@ -22,9 +22,7 @@ const Login = () => {
         }
       })
       .catch((err) => {
-        setErrors({ ...errors, error: err.response.data.error });
-        setIsOpen(!isOpen);
-        console.log(errors);
+        setErrors([...errors, { message: err.response.data.error }]);
       });
   };
 
@@ -38,6 +36,9 @@ const Login = () => {
       <Modal isOpen={isOpen} toggle={() => setIsOpen(!isOpen)}>
         <ModalHeader toggle={() => setIsOpen(!isOpen)}>Log In</ModalHeader>
         <ModalBody>
+          {errors.map((err) => (
+            <ErrorMessage key={err.message} error={err} />
+          ))}
           <Form onSubmit={onSubmit}>
             <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
               <Label for="email" className="mr-sm-2">Email</Label>
