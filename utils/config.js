@@ -1,5 +1,4 @@
-process.env.PORT = process.env.PORT || 8000;
-const ENV_URL = `http://localhost:${process.env.PORT}`;
+const ENV_URL = process.env.API_URL || 'http://localhost:8000';
 
 module.exports = {
   url: ENV_URL
