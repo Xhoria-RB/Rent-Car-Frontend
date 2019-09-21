@@ -13,6 +13,7 @@ import {
   Container
 } from 'reactstrap';
 import NavItems from './NavItems';
+import Login from './Login';
 import { navItems } from '../utils/constants';
 
 const nav = () => {
@@ -58,7 +59,7 @@ const nav = () => {
               <NavLink href="/report">Reports</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="/login">Login</NavLink>
+              <Login />
             </NavItem>
             <NavItem>
               <NavLink href="/signin">Sign In</NavLink>
