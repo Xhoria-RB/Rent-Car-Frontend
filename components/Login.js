@@ -5,7 +5,6 @@ import {
 } from 'reactstrap';
 import axios from 'axios';
 import Cookie from 'js-cookie';
-import parseCookies from './lib/parseCookies';
 import { url } from '../utils/config';
 import ErrorMessage from './ErrorMessage';
 
@@ -26,7 +25,8 @@ const Login = () => {
         }
       })
       .catch((err) => {
-        setErrors([...errors, { message: err.response.data.error }]);
+        const message = err.response.data.error || err.message;
+        setErrors([...errors, { message }]);
       });
   };
 
@@ -71,13 +71,6 @@ const Login = () => {
       </Modal>
     </div>
   );
-};
-
-Login.getInitialProps = ({ req }) => {
-  const cookies = parseCookies(req);
-  return {
-    initialCookieValue: cookies.user
-  };
 };
 
 export default Login;
