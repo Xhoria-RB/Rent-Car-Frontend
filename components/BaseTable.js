@@ -14,15 +14,13 @@ const BaseTable = ({ resData }) => {
   useEffect(() => {
     try {
       setDBData(resData);
+      mappingKeys();
     }
     catch (err) {
       alert(err);
     }
-  }, [resData]);
+  }, [resData, dbData]);
 
-  useEffect(() => {
-    mappingKeys();
-  }, [dbData]);
   return (
     <Table hover>
       <thead>
