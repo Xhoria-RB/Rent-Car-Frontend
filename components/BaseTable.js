@@ -47,11 +47,13 @@ function BaseTable() {
     }
   ];
   let keys;
+  // eslint-disable-next-line array-callback-return
   mockHeader.map((data) => {
     keys = Object.keys(data);
   });
+  // eslint-disable-next-line no-unused-vars
   const newTest = () => {
-    let keys;
+    // eslint-disable-next-line array-callback-return
     mockData.map((data) => {
       keys = Object.keys(data);
       //   keys.map((el) => {
