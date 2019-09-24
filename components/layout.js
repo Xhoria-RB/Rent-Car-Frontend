@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Head from 'next/head';
-import Nav from './nav';
+import Nav from './Nav';
 import Footer from './Footer';
 
 
