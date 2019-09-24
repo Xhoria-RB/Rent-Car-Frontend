@@ -2,15 +2,16 @@ import React, { useState } from 'react';
 import Router from 'next/router';
 import axios from 'axios';
 import Cookie from 'js-cookie';
+import get from 'lodash/get';
 import {
   Col, Button, Form, FormGroup, Label, Input, Row, Container, Jumbotron
 } from 'reactstrap';
 import Layout from '../components/Layout';
 import { url } from '../utils/config';
 import ErrorMessage from '../components/ErrorMessage';
+import withAuth from '../components/lib/withAuth';
 
-
-const Register = () => {
+const Register = ({ userCookie }) => {
   const [user, setUser] = useState({});
   const [errors, setErrors] = useState([]);
   const headers = {
@@ -26,13 +27,13 @@ const Register = () => {
         }
       })
       .catch((err) => {
-        const message = err.response.data.error || err.message;
+        const message = get(err, 'response.data.error', err.message);
         setErrors([...errors, { message }]);
       });
   };
 
   return (
-    <Layout>
+    <Layout user={userCookie}>
       <Container>
         <Jumbotron>
           <Form>
@@ -85,4 +86,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default withAuth(Register);

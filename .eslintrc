@@ -13,6 +13,7 @@
       "implicit-arrow-linebreak": "off",    
       "comma-dangle": "off",
       "react/jsx-one-expression-per-line": "off",
-      "brace-style": ["error", "stroustrup"]
+      "brace-style": ["error", "stroustrup"],
+      "react/prop-types": ["warn"]
     }
   }

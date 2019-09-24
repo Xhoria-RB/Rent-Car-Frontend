@@ -5,6 +5,7 @@ import {
 } from 'reactstrap';
 import axios from 'axios';
 import Cookie from 'js-cookie';
+import get from 'lodash/get';
 import { url } from '../utils/config';
 import ErrorMessage from './ErrorMessage';
 
@@ -25,7 +26,7 @@ const Login = () => {
         }
       })
       .catch((err) => {
-        const message = err.response.data.error || err.message;
+        const message = get(err, 'response.data.error', err.message);
         setErrors([...errors, { message }]);
       });
   };

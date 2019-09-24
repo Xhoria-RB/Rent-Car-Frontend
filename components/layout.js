@@ -5,7 +5,7 @@ import Nav from './Nav';
 import Footer from './Footer';
 
 
-const Layout = ({ children }) => (
+const Layout = ({ children, user = {} }) => (
   <div>
     <Head>
       <title>Home</title>
@@ -17,7 +17,7 @@ const Layout = ({ children }) => (
       />
     </Head>
 
-    <Nav />
+    <Nav user={user} />
 
     {children}
 
