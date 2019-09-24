@@ -31,7 +31,6 @@ const BaseTable = ({ resData }) => {
         </tr>
       </thead>
       <tbody>
-        {/* <tr> */}
         {Map(dbData, (el) => (
           <tr>
             {Object.values(el).map((x) => (<td>{x}</td>))}
