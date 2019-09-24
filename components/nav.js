@@ -62,7 +62,7 @@ const nav = () => {
               <Login />
             </NavItem>
             <NavItem>
-              <NavLink href="/signin">Sign In</NavLink>
+              <NavLink href="/register">Sign In</NavLink>
             </NavItem>
           </Nav>
         </Collapse>
