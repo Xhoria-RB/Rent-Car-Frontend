@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import Router from 'next/router';
 import axios from 'axios';
 import Cookie from 'js-cookie';
@@ -84,6 +85,9 @@ const Register = ({ userCookie }) => {
       </Container>
     </Layout>
   );
+};
+Register.propTypes = {
+  userCookie: PropTypes.objectOf(PropTypes.string).isRequired
 };
 
 export default withAuth(Register);

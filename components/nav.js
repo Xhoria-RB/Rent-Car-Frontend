@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import {
   Collapse,
   Navbar,
@@ -61,17 +62,24 @@ const nav = ({ user }) => {
               <NavLink href="/report">Reports</NavLink>
             </NavItem>
             <NavItem>
-              { !user.id ? <Login /> : <Logout /> }
+              {!user.id ? <Login /> : <Logout />}
             </NavItem>
             {!user.id && (
-            <NavItem>
-              <NavLink href="/register">Sign In</NavLink>
-            </NavItem>
+              <NavItem>
+                <NavLink href="/register">Sign In</NavLink>
+              </NavItem>
             )}
           </Nav>
         </Collapse>
       </Container>
     </Navbar>
   );
+};
+
+nav.propTypes = {
+  user: PropTypes.oneOfType([
+    PropTypes.bool,
+    PropTypes.string
+  ]).isRequired
 };
 export default nav;

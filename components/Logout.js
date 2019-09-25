@@ -1,13 +1,11 @@
-import React from 'react';
-import Router from 'next/router';
+import React, { useContext } from 'react';
 import { Button } from 'reactstrap';
-import Cookie from 'js-cookie';
-
+import UserContext from './UserContext';
 
 const Logout = () => {
+  const { logOut } = useContext(UserContext);
   const handleLogout = () => {
-    Cookie.remove('user');
-    Router.push('/');
+    logOut();
   };
 
   return <Button color="danger" onClick={handleLogout}>Logout</Button>;

@@ -1,18 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import {
   Button, Modal, ModalHeader, ModalBody,
   Form, FormGroup, Label, Input
 } from 'reactstrap';
 import axios from 'axios';
-import Cookie from 'js-cookie';
 import get from 'lodash/get';
 import { url } from '../utils/config';
 import ErrorMessage from './ErrorMessage';
+import UserContext from './UserContext';
 
 const Login = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [user, setUser] = useState({});
   const [errors, setErrors] = useState([]);
+  const { logIn } = useContext(UserContext);
   const headers = {
     'Content-Type': 'application/json'
   };
@@ -22,7 +23,7 @@ const Login = () => {
         if (res.status === 200) {
           const { data } = res;
           setIsOpen(!isOpen);
-          Cookie.set('user', data);
+          logIn(data);
         }
       })
       .catch((err) => {

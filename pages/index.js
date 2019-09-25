@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {
   Container, Row
 } from 'reactstrap';
@@ -71,4 +72,7 @@ const Home = ({ userCookie }) => (
   </Layout>
 
 );
+Home.propTypes = {
+  userCookie: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]).isRequired
+};
 export default withAuth(Home);
