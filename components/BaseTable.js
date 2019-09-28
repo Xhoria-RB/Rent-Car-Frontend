@@ -1,9 +1,11 @@
+/* eslint-disable no-underscore-dangle */
 import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
 import PropTypes from 'prop-types';
 import { Table } from 'reactstrap';
 import Map from 'lodash/map';
 
-const BaseTable = ({ resData }) => {
+const BaseTable = ({ resData, url }) => {
   const [dbData, setDBData] = useState([]);
   const [keys, setKeys] = useState([]);
 
@@ -31,9 +33,16 @@ const BaseTable = ({ resData }) => {
         </tr>
       </thead>
       <tbody>
-        {Map(dbData, (el) => (
+        {Map(dbData, (obj) => (
           <tr>
-            {Object.values(el).map((x) => (<td>{x}</td>))}
+            {Object.values(obj).map((el) => (
+              <Link href={{
+                pathname: url,
+                query: { id: obj._id }
+              }}
+              ><td>{el}</td>
+              </Link>
+            ))}
           </tr>
         ))}
       </tbody>
@@ -44,7 +53,8 @@ const BaseTable = ({ resData }) => {
 BaseTable.propTypes = {
   resData: PropTypes.arrayOf(
     PropTypes.object
-  ).isRequired
+  ).isRequired,
+  url: PropTypes.string.isRequired
 };
 
 export default BaseTable;

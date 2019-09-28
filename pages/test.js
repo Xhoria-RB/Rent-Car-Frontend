@@ -8,7 +8,7 @@ const Test = () => {
     {
       status: true,
       _id: '5d77e3ba974d5e86c83fa930',
-      description: 'first car',
+      description: 'First car',
       chasisNO: 'chasis1212',
       motorNO: 'motor2121',
       plateNO: 'oias21293',
@@ -21,7 +21,7 @@ const Test = () => {
     {
       status: true,
       _id: '5d7865d9e095578debff4705',
-      description: 'first car',
+      description: 'Second car',
       chasisNO: 'chasis1212',
       motorNO: 'motor2121',
       plateNO: 'oias21293',
@@ -39,7 +39,7 @@ const Test = () => {
         <title>Test</title>
       </Head>
       <Layout>
-        <BaseTable resData={dbData} />
+        <BaseTable resData={dbData} url="/cars" />
       </Layout>
     </div>
   );
