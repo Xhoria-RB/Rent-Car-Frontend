@@ -4,7 +4,7 @@ import Layout from '../components/Layout';
 import withAuth from '../components/lib/withAuth';
 import BaseTable from '../components/BaseTable';
 
-const Test = ({ userCookie }) => {
+const Cars = ({ userCookie }) => {
   const dbData = [
     {
       status: true,
@@ -37,13 +37,13 @@ const Test = ({ userCookie }) => {
   return (
     <div>
       <Head>
-        <title>Test</title>
+        <title>Cars</title>
       </Head>
       <Layout user={userCookie}>
-        <BaseTable resData={dbData} url="/cars" />
+        <BaseTable resData={dbData} url="/car" />
       </Layout>
     </div>
   );
 };
 
-export default withAuth(Test);
+export default withAuth(Cars);
