@@ -1,13 +1,15 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {
   Container, Row
 } from 'reactstrap';
 import Layout from '../components/Layout';
+import withAuth from '../components/lib/withAuth';
 import DealerCard from '../components/DealerCard';
 import { services } from '../utils/constants';
 
-const Home = () => (
-  <Layout>
+const Home = ({ userCookie }) => (
+  <Layout user={userCookie}>
     <Container>
       <div className="hero">
         <div className="bg-image" />
@@ -70,4 +72,7 @@ const Home = () => (
   </Layout>
 
 );
-export default Home;
+Home.propTypes = {
+  userCookie: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]).isRequired
+};
+export default withAuth(Home);

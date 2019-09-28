@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import {
   Collapse,
   Navbar,
@@ -14,10 +15,12 @@ import {
 } from 'reactstrap';
 import NavItems from './NavItems';
 import Login from './Login';
+import Logout from './Logout';
 import { navItems } from '../utils/constants';
 
-const nav = () => {
+const nav = ({ user }) => {
   const [isOpen, toggle] = useState(false);
+
   return (
     <Navbar color="light" light expand="md">
       <Container>
@@ -59,15 +62,24 @@ const nav = () => {
               <NavLink href="/report">Reports</NavLink>
             </NavItem>
             <NavItem>
-              <Login />
+              {!user.id ? <Login /> : <Logout />}
             </NavItem>
-            <NavItem>
-              <NavLink href="/register">Sign In</NavLink>
-            </NavItem>
+            {!user.id && (
+              <NavItem>
+                <NavLink href="/register">Sign In</NavLink>
+              </NavItem>
+            )}
           </Nav>
         </Collapse>
       </Container>
     </Navbar>
   );
+};
+
+nav.propTypes = {
+  user: PropTypes.oneOfType([
+    PropTypes.bool,
+    PropTypes.string
+  ]).isRequired
 };
 export default nav;
