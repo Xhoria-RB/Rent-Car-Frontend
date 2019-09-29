@@ -43,60 +43,64 @@ const mockData = [
 ];
 
 const BaseTable = ({ url }) => {
-  const [dbData, setDBData] = useState([]);
-  const [error, setError] = useState();
-  const [keys, setKeys] = useState([]);
+  // const [dbData, setDBData] = useState([]);
+  // const [error, setError] = useState();
+  // const [keys, setKeys] = useState([]);
 
-  const mappingKeys = () => {
-    mockData.map((data) => setKeys(Object.keys(data)));
-  };
+  // const mappingKeys = () => {
+  //   mockData.map((data) => setKeys(Object.keys(data)));
+  // };
 
-  // const [{ data, loading, err }, refetch] = useAxios('https://api.github.com/repos/zeit/next.js');
-  function fetchData(query) {
+  const [{ data, loading, err }, refetch] = useAxios('https://api.github.com/repos/zeit/next.js');
+  // function fetchData(query) {
     // setError(error);
     // setDBData(data);
-  }
+  // }
 
-  useEffect(() => {
-    fetchData();
-  }, []);
+  // useEffect(() => {
+  //   fetchData();
+  // }, []);
 
-  useEffect(() => {
-    try {
-      setDBData(mockData);
-      mappingKeys();
-    }
-    catch (err) {
-      alert(err);
-    }
-  }, [mockData]);
+  // useEffect(() => {
+  //   try {
+  //     setDBData(mockData);
+  //     mappingKeys();
+  //   }
+  //   catch (err) {
+  //     alert(err);
+  //   }
+  // }, [mockData]);
 
   return (
-    <Table hover>
-      <thead>
-        <tr>
-          {keys.map((head) => (
-            <th key={head.id}>{head}</th>
-          ))}
-        </tr>
-      </thead>
-      <tbody>
-        {Map(dbData, (obj) => (
-          <tr>
-            {Object.values(obj).map((el) => (
-              <Link href={{
-                pathname: url,
-                query: { id: obj._id }
-              }}
-              ><td>{el}</td>
-              </Link>
-            ))}
-          </tr>
-        ))}
-      </tbody>
-      {/* <pre>{JSON.stringify(data, null, 2)}</pre> */}
-    </Table>
-  );
+    <>
+      <h1>tamo aqui</h1>
+      {err ? <div>error</div> : <pre>{JSON.stringify(data, null, 2)}</pre>}
+    </>
+    // <Table hover>
+    //   <thead>
+    //     <tr>
+    //       {keys.map((head) => (
+    //         <th key={head.id}>{head}</th>
+    //       ))}
+    //     </tr>
+    //   </thead>
+    //   <tbody>
+    //     {Map(dbData, (obj) => (
+    //       <tr>
+    //         {Object.values(obj).map((el) => (
+    //           <Link href={{
+    //             pathname: url,
+    //             query: { id: obj._id }
+    //           }}
+    //           ><td>{el}</td>
+    //           </Link>
+    //         ))}
+    //       </tr>
+    //     ))}
+    //   </tbody>
+    //   {/* <pre>{JSON.stringify(data, null, 2)}</pre> */}
+    // </Table>
+  )
 };
 
 BaseTable.propTypes = {

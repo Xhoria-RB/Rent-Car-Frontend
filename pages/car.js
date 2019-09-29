@@ -41,7 +41,6 @@ const Cars = ({ userCookie, stars }) =>
         <title>Cars</title>
       </Head>
       <Layout user={userCookie}>
-        <h1>{stars} hola</h1>
         <BaseTable url="car" />
       </Layout>
     </div>
