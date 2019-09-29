@@ -1,3 +1,4 @@
+import { url } from './config';
 
 module.exports = {
   services: [[
@@ -30,5 +31,8 @@ module.exports = {
       { title: 'Employees', url: '/employee' }
     ]
 
-  ]
+  ],
+  queries: {
+    car: `${url}/api/car`
+  }
 };
