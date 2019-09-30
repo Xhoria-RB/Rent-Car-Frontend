@@ -18,7 +18,7 @@ const BaseTable = ({ entity }) => {
       <thead>
         <tr>
           {transformedData && Object.keys(transformedData[0]).filter((data) => data !== 'id').map((key) => (
-            <th key={key.id}>{key}</th>
+            <th className="text-capitalize" key={key.id}>{key}</th>
           ))}
         </tr>
       </thead>

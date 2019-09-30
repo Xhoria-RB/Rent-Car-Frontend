@@ -4,14 +4,14 @@ import Layout from '../components/Layout';
 import withAuth from '../components/lib/withAuth';
 import BaseTable from '../components/BaseTable';
 
-const Cars = ({ userCookie }) =>
+const Rent = ({ userCookie }) =>
   (
     <Layout user={userCookie}>
       <Head>
-        <title>Cars</title>
+        <title>Car rents</title>
       </Head>
-      <BaseTable entity="car" />
+      <BaseTable entity="rent" />
     </Layout>
   );
 
-export default withAuth(Cars);
+export default withAuth(Rent);

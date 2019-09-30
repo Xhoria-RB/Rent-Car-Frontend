@@ -3,7 +3,7 @@ module.exports = function employeeTransformer(data) {
     // eslint-disable-next-line no-underscore-dangle
     id: data._id,
     name: data.fullName,
-    idCard: data.idCard,
+    cedula: data.idCard,
     email: data.email,
     role: data.role,
     commission: data.commission,
