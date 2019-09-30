@@ -1,3 +1,4 @@
+import { url } from './config';
 
 module.exports = {
   services: [[
@@ -27,8 +28,21 @@ module.exports = {
     [
       { title: 'Who we are', url: '/about' },
       { title: 'Contact us', url: '/contact' },
-      { title: 'Employees', url: '/employee' }
+      { title: 'Employees', url: '/employee' },
+      { title: 'Clients', url: '/client' }
     ]
 
-  ]
+  ],
+  queries: {
+    car: `${url}/api/car`,
+    brand: `${url}/api/brand`,
+    car_type: `${url}/api/car_type`,
+    model: `${url}/api/model`,
+    fuel_type: `${url}/api/fuel_type`,
+    employee: `${url}/api/employee`,
+    rent: `${url}/api/rent`,
+    return: `${url}/api/return`,
+    inspection: `${url}/api/inspection`,
+    client: `${url}/api/client`,
+  }
 };
