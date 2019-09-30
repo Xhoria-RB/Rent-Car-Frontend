@@ -7,10 +7,10 @@ import BaseTable from '../components/BaseTable';
 const Cars = ({ userCookie }) =>
   (
     <div>
-      <Head>
-        <title>Cars</title>
-      </Head>
       <Layout user={userCookie}>
+        <Head>
+          <title>Cars</title>
+        </Head>
         <BaseTable entity="car" />
       </Layout>
     </div>
