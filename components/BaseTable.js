@@ -4,29 +4,21 @@ import Link from 'next/link';
 import PropTypes from 'prop-types';
 import { Table } from 'reactstrap';
 import { queries } from '../utils/constants';
+import transformer from '../utils/transformers';
 
 const BaseTable = ({ entity }) => {
   // eslint-disable-next-line no-unused-vars
   const [{ response, loading, err }, refetch] = useAxios(`${queries[entity]}`);
+  const entityTransformer = transformer[entity];
 
-  function parseCar(data) {
-    return {
-      // eslint-disable-next-line no-underscore-dangle
-      id: data._id,
-      description: data.description,
-      chasis: data.chasisNO,
-      motor: data.motorNO,
-      plate: data.plateNO
-    };
-  }
-  const transformedData = response && response.data ? response.data.map(parseCar) : null;
+  const transformedData = response && response.data ? response.data.map(entityTransformer) : null;
 
   return (
     <Table hover>
       <thead>
         <tr>
           {transformedData && Object.keys(transformedData[0]).filter((data) => data !== 'id').map((key) => (
-            <th key={key.id}>{key}</th>
+            <th className="text-capitalize" key={key.id}>{key}</th>
           ))}
         </tr>
       </thead>

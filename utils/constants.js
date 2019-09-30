@@ -41,7 +41,6 @@ module.exports = {
     fuel_type: `${url}/api/fuel_type`,
     employee: `${url}/api/employee`,
     rent: `${url}/api/rent`,
-    return: `${url}/api/return`,
     inspection: `${url}/api/inspection`,
     client: `${url}/api/client`,
   }
