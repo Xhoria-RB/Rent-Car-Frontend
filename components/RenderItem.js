@@ -4,7 +4,7 @@ import {
   FormGroup, Label, Input
 } from 'reactstrap';
 
-function RentItem({ data = {} }) {
+function RenderItem({ data = {} }) {
   const TO_FILTER = ['id'];
   return (
     <div className="mx-1 px-1 ">
@@ -23,4 +23,4 @@ function RentItem({ data = {} }) {
   );
 }
 
-export default RentItem;
+export default RenderItem;

@@ -8,7 +8,7 @@ import {
 } from 'reactstrap';
 import Layout from '../../components/Layout';
 import { queries } from '../../utils/constants';
-import RentItem from '../../components/RentItem';
+import RenderItem from '../../components/RenderItem';
 
 const SingleRent = () => {
   const router = useRouter();
@@ -65,15 +65,15 @@ const SingleRent = () => {
                 <Form>
                   <Card className="my-5">
                     <CardHeader>Car</CardHeader>
-                    <RentItem data={car} />
+                    <RenderItem data={car} />
                   </Card>
                   <Card className="my-5">
                     <CardHeader>Client</CardHeader>
-                    <RentItem data={client} />
+                    <RenderItem data={client} />
                   </Card>
                   <Card className="my-5">
                     <CardHeader>Employee</CardHeader>
-                    <RentItem data={employee} />
+                    <RenderItem data={employee} />
                   </Card>
                 </Form>
               </Col>
