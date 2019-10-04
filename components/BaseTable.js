@@ -1,20 +1,29 @@
 import React from 'react';
 import useAxios from 'axios-hooks';
+import axios from 'axios';
 import Link from 'next/link';
 import PropTypes from 'prop-types';
 import {
-  Table, Col, Row, Container
+  Table, Col, Row, Container, Button
 } from 'reactstrap';
 import { queries } from '../utils/constants';
 import transformer from '../utils/transformers';
+import { url } from '../utils/config';
 
 const BaseTable = ({ entity }) => {
   // eslint-disable-next-line no-unused-vars
   const [{ response, loading, err }, refetch] = useAxios(`${queries[entity]}`);
   const entityTransformer = transformer[entity];
 
-  const transformedData = response && response.data ? response.data.map(entityTransformer) : null;
-
+  const transformedData = response && response.data ? response.data.map(entityTransformer) : [];
+  function handleDelete(id) {
+    axios.delete(`${url}/api/${entity}/${id}`)
+      .then((res) => {
+        alert('Deleted', res);
+        refetch();
+      })
+      .catch((error) => console.log(error));
+  }
   return (
     <Container>
       <Row>
@@ -22,7 +31,7 @@ const BaseTable = ({ entity }) => {
           <Table hover>
             <thead>
               <tr>
-                {transformedData && Object.keys(transformedData[0]).filter((data) => data !== 'id').map((key) => (
+                {transformedData && transformedData[0] && Object.keys(transformedData[0]).filter((data) => data !== 'id').map((key) => (
                   <th className="text-capitalize" key={key.id}>{key}</th>
                 ))}
               </tr>
@@ -40,6 +49,7 @@ const BaseTable = ({ entity }) => {
                     }
                     return null;
                   })}
+                  <Button color="danger" className="my-1" size="lg" onClick={() => handleDelete(element.id)}>X</Button>
                 </tr>
               ))}
             </tbody>
