@@ -16,7 +16,7 @@ module.exports = {
     [
       { title: 'Rents', url: '/rent' },
       { title: 'Returns', url: '/return' },
-      { title: 'Inspections', url: '/inspections' }
+      { title: 'Inspections', url: '/inspection' }
     ],
     [
       { title: 'Brands', url: '/brand' },
