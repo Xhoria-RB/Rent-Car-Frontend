@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import useAxios from 'axios-hooks';
 import get from 'lodash/get';
 import {
-  Row, Col, Button, Form, FormGroup, Label, Input, FormText, Container, Spinner, Card,
-  CardHeader
+  Row, Col, Form, Container, Spinner, Card, CardHeader
 } from 'reactstrap';
 import Layout from '../../components/Layout';
 import { queries } from '../../utils/constants';
+import RentItem from '../../components/RentItem';
 
 const SingleRent = () => {
   const router = useRouter();
@@ -49,78 +49,39 @@ const SingleRent = () => {
     pricePerDay: data.pricePerDay,
     daysQt: data.daysQt
   });
-
-
+  const content = (response && response.data) && transformer(response.data);
+  const { car = {}, client = {}, employee = {} } = content || {};
   return (
     <div>
       <Head>
         <title>Home</title>
       </Head>
       <Layout>
-        <h1>SingleRent</h1>
-        {response && response.data ? (
+        <h1 className="text-center my-3">SingleRent</h1>
+        {content ? (
           <Container>
-            {console.log(loading)}
-            <pre>{JSON.stringify(transformer(response.data))}</pre>
             <Row>
-              <Col sm="12" md={{ size: 8, offset: 2 }}>
+              <Col sm="12" md={{ size: 10, offset: 2 }}>
                 <Form>
-                  <Card>
+                  <Card className="my-5">
                     <CardHeader>Car</CardHeader>
-                    <div className="mx-1">
-                      <FormGroup>
-                        <Label for="exampleEmail">Description</Label>
-                        <Input type="email" name="email" id="exampleEmail" placeholder="with a placeholder" />
-                      </FormGroup>
-                      <FormGroup>
-                        <Label for="examplePassword">Password</Label>
-                        <Input type="password" name="password" id="examplePassword" placeholder="password placeholder" />
-                      </FormGroup>
-                    </div>
+                    <RentItem data={car} />
                   </Card>
-                  <Card>
+                  <Card className="my-5">
                     <CardHeader>Client</CardHeader>
-                    <div className="mx-1">
-                      <FormGroup>
-                        <Label for="exampleEmail">Description</Label>
-                        <Input type="email" name="email" id="exampleEmail" placeholder="with a placeholder" />
-                      </FormGroup>
-                      <FormGroup>
-                        <Label for="examplePassword">Password</Label>
-                        <Input type="password" name="password" id="examplePassword" placeholder="password placeholder" />
-                      </FormGroup>
-                    </div>
+                    <RentItem data={client} />
                   </Card>
-                  <Card>
+                  <Card className="my-5">
                     <CardHeader>Employee</CardHeader>
-                    <div className="mx-1">
-                      <FormGroup>
-                        <Label for="exampleEmail">Description</Label>
-                        <Input type="email" name="email" id="exampleEmail" placeholder="with a placeholder" />
-                      </FormGroup>
-                      <FormGroup>
-                        <Label for="examplePassword">Password</Label>
-                        <Input type="password" name="password" id="examplePassword" placeholder="password placeholder" />
-                      </FormGroup>
-                    </div>
+                    <RentItem data={employee} />
                   </Card>
-                  <Button>Submit</Button>
                 </Form>
               </Col>
             </Row>
           </Container>
         ) : (
-          <center>
-              {console.log(err, '+++++++++++', loading)}
-              <Spinner
-                style={{ width: '7rem', height: '7rem' }}
-                color="dark"
-              />
-            </center>
+          <center><Spinner style={{ width: '7rem', height: '7rem', margin: 'auto' }} color="dark" /></center>
         )}
-
-        {/* {response && response.data && <pre>{JSON.stringify(response.data, null, 2)}</pre>} */}
-
       </Layout>
     </div>
   );
