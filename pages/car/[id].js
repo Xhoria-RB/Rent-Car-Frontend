@@ -2,8 +2,13 @@ import React from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import useAxios from 'axios-hooks';
+import get from 'lodash/get';
+import {
+  Row, Col, Form, Container, Spinner, Card, CardHeader
+} from 'reactstrap';
 import Layout from '../../components/Layout';
 import { queries } from '../../utils/constants';
+import RenderItem from '../../components/RenderItem';
 
 const SingleCar = () => {
   const router = useRouter();
@@ -11,6 +16,20 @@ const SingleCar = () => {
 
   // eslint-disable-next-line no-unused-vars
   const [{ response, loading, err }, refetch] = useAxios(`${queries.car}/${id}`);
+  const transformer = (data) => ({
+    // eslint-disable-next-line no-underscore-dangle
+    id: data._id,
+    brand: get(data, 'brandID.description', ''),
+    model: get(data, 'modelID.description', ''),
+    car_type: get(data, 'carTypeID.description'),
+    fuel_type: get(data, 'fuelTypeID.description'),
+    description: data.description,
+    chasisNO: data.chasisNO,
+    motorNO: data.motorNO,
+    plateNO: data.plateNO,
+    status: data.carStatus
+  });
+  const content = (response && response.data) && transformer(response.data);
 
   return (
     <div>
@@ -18,8 +37,21 @@ const SingleCar = () => {
         <title>Home</title>
       </Head>
       <Layout>
-        <h1>SingleCar</h1>
-        {response && response.data && <pre>{JSON.stringify(response.data, null, 2)}</pre>}
+        <h1 className="text-center my-3">SingleCar</h1>
+        {content ? (
+          <Container>
+            <Row>
+              <Col sm="12" md={{ size: 10, offset: 2 }}>
+                <Form>
+                  <Card className="my-5">
+                    <CardHeader>Car</CardHeader>
+                    <RenderItem data={content} />
+                  </Card>
+                </Form>
+              </Col>
+            </Row>
+          </Container>
+        ) : <center><Spinner style={{ width: '7rem', height: '7rem', margin: 'auto' }} color="dark" /></center>}
 
       </Layout>
     </div>

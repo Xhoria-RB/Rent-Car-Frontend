@@ -30,27 +30,34 @@ const SingleRent = () => {
       brand: get(data, 'carID.brandID.description', ''),
       model: get(data, 'carID.modelID.description', ''),
       fuel_type: get(data, 'carID.fuelTypeID.description', ''),
+      disabled: true
     },
     client: {
       id: get(data, 'clientID._id'),
       name: get(data, 'clientID.fullName', ''),
       cedula: get(data, 'clientID.idCard', ''),
       credit_card: get(data, 'clientID.creditCard', ''),
-      entity: get(data, 'clientID.entity')
+      entity: get(data, 'clientID.entity'),
+      disabled: true
     },
     employee: {
       id: get(data, 'employeeID._id'),
       name: get(data, 'employeeID.fullName', ''),
       cedula: get(data, 'employeeID.idCard', ''),
-      shift: get(data, 'employeeID.shift', '')
+      shift: get(data, 'employeeID.shift', ''),
+      disabled: true
     },
-    rentDate: data.rentDate,
-    returnDate: data.returnDate,
-    pricePerDay: data.pricePerDay,
-    daysQt: data.daysQt
+    rent: {
+      rentDate: data.rentDate,
+      returnDate: data.returnDate,
+      pricePerDay: data.pricePerDay,
+      daysQt: data.daysQt
+    }
   });
   const content = (response && response.data) && transformer(response.data);
-  const { car = {}, client = {}, employee = {} } = content || {};
+  const {
+    car = {}, client = {}, employee = {}, rent = {}
+  } = content || {};
   return (
     <div>
       <Head>
@@ -68,6 +75,10 @@ const SingleRent = () => {
                     <RenderItem data={car} />
                   </Card>
                   <Card className="my-5">
+                    <CardHeader>Rent Info</CardHeader>
+                    <RenderItem data={rent} />
+                  </Card>
+                  <Card className="my-5">
                     <CardHeader>Client</CardHeader>
                     <RenderItem data={client} />
                   </Card>
@@ -79,9 +90,7 @@ const SingleRent = () => {
               </Col>
             </Row>
           </Container>
-        ) : (
-          <center><Spinner style={{ width: '7rem', height: '7rem', margin: 'auto' }} color="dark" /></center>
-        )}
+        ) : <center><Spinner style={{ width: '7rem', height: '7rem', margin: 'auto' }} color="dark" /></center>}
       </Layout>
     </div>
   );
