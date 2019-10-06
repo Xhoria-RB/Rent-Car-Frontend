@@ -9,6 +9,7 @@ module.exports = function carTransformer(data) {
     description: data.description,
     chasis: data.chasisNO,
     motor: data.motorNO,
-    plate: data.plateNO
+    plate: data.plateNO,
+    status: data.carStatus || 'Available'
   };
 };
