@@ -12,7 +12,6 @@ const NavItems = ({ url, title }) => (
       </NavItem>
     </DropdownItem>
     <DropdownItem divider />
-
   </>
 );
 

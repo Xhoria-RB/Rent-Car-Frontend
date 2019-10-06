@@ -2,12 +2,13 @@ import React from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import useAxios from 'axios-hooks';
+import moment from 'moment';
 import get from 'lodash/get';
 import {
   Row, Col, Form, Container, Spinner, Card, CardHeader
 } from 'reactstrap';
 import Layout from '../../components/Layout';
-import { queries } from '../../utils/constants';
+import { queries, dateFormat } from '../../utils/constants';
 import RenderItem from '../../components/RenderItem';
 
 const SingleRent = () => {
@@ -48,8 +49,8 @@ const SingleRent = () => {
       disabled: true
     },
     rent: {
-      rentDate: data.rentDate,
-      returnDate: data.returnDate,
+      rentDate: moment(data.rentDate).format(dateFormat),
+      returnDate: moment(data.returnDate).format(dateFormat),
       pricePerDay: data.pricePerDay,
       daysQt: data.daysQt
     }

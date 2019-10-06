@@ -1,4 +1,6 @@
+import moment from 'moment';
 import get from 'lodash/get';
+import { dateFormat } from '../constants';
 
 module.exports = function inspectionTransformer(data) {
   return {
@@ -7,6 +9,6 @@ module.exports = function inspectionTransformer(data) {
     description: get(data, 'carID.description', ''),
     client: get(data, 'clientID.fullName', ''),
     employee: get(data, 'employeeID.fullName', ''),
-    inspectionDate: data.inspectionDate
+    inspectionDate: moment(data.inspectionDate).format(dateFormat)
   };
 };
