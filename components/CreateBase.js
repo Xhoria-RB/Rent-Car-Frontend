@@ -22,7 +22,7 @@ const CreateBase = ({ entity, title }) => {
         Router.reload();
       })
       .catch((err) => {
-        const message = get(err, 'response.data.message', err.message);
+        const message = get(err, 'response.data.errors.description.message', err.message);
         setErrors([...errors, { message }]);
       });
   };
