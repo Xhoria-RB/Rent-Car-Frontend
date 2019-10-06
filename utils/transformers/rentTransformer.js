@@ -1,4 +1,6 @@
+import moment from 'moment';
 import get from 'lodash/get';
+import { dateFormat } from '../constants';
 
 module.exports = function rentTransformer(data) {
   return {
@@ -7,7 +9,7 @@ module.exports = function rentTransformer(data) {
     description: get(data, 'carID.description', ''),
     client: get(data, 'clientID.fullName', ''),
     employee: get(data, 'employeeID.fullName', ''),
-    rentDate: data.rentDate,
-    returnDate: data.returnDate
+    rentDate: moment(data.rentDate).format(dateFormat),
+    returnDate: moment(data.returnDate).format(dateFormat)
   };
 };

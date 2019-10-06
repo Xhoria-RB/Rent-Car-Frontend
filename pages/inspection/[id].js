@@ -2,12 +2,13 @@ import React from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import useAxios from 'axios-hooks';
+import moment from 'moment';
 import get from 'lodash/get';
 import {
   Row, Col, Form, Container, Spinner, Card, CardHeader
 } from 'reactstrap';
 import Layout from '../../components/Layout';
-import { queries } from '../../utils/constants';
+import { queries, dateFormat } from '../../utils/constants';
 import RenderItem from '../../components/RenderItem';
 
 const SingleInspection = () => {
@@ -56,7 +57,7 @@ const SingleInspection = () => {
       thirdTire: data.thirdTire,
       fourthTire: data.fourthTire,
       fuelQt: data.fuelQt,
-      inspectionDate: data.inspectionDate
+      inspectionDate: moment(data.inspectionDate).format(dateFormat)
     }
   });
   const content = (response && response.data) && transformer(response.data);
