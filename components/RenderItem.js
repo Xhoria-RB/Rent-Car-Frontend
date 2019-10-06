@@ -15,7 +15,7 @@ function RenderItem({ data = {} }) {
     return (
       <div className="mx-1 px-1 ">
         <FormGroup>
-          <Label className="text-capitalize" style={{ color: 'red !important' }} for={key}>{key}</Label>
+          <Label className="text-capitalize" for={key}>{key}</Label>
           <Input defaultValue={value} type="text" name={key} id={key} readOnly={READ_ONLY} />
         </FormGroup>
       </div>
