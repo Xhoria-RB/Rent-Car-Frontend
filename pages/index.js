@@ -75,4 +75,5 @@ const Home = ({ userCookie }) => (
 Home.propTypes = {
   userCookie: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]).isRequired
 };
-export default withAuth(Home);
+
+export default withAuth(Home, true);
