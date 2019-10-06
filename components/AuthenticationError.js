@@ -9,7 +9,7 @@ import Login from './Login';
 
 function AuthenticationError() {
   return (
-    <Layout>
+    <Layout light>
       <center style={{ margin: 'auto', width: '50%', marginTop: '30px' }}>
         <Jumbotron>
           <Row>
