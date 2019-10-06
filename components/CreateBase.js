@@ -1,45 +1,41 @@
 import React, { useState } from 'react';
 import Router from 'next/router';
 import {
-  Button, Modal, ModalHeader, ModalBody,
-  Form, FormGroup, Label, Input, FormText
+  Button, Modal, ModalHeader, ModalBody, Label, Input, Form, FormGroup
 } from 'reactstrap';
 import axios from 'axios';
 import get from 'lodash/get';
-import isEmpty from 'lodash/isEmpty';
 import { url } from '../utils/config';
 import ErrorMessage from './ErrorMessage';
-// import UserContext from './UserContext';
 
-const CreateBrand = () => {
+const CreateBase = ({ entity, title }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [brand, setBrand] = useState({});
+  const [data, setData] = useState({});
   const [errors, setErrors] = useState([]);
-  // const { logIn } = useContext(UserContext);
   const headers = {
     'Content-Type': 'application/json'
   };
-  const logRequest = () => {
-    axios.post(`${url}/api/brand`, { ...brand }, { headers })
+  const sendRequest = () => {
+    axios.post(`${url}/api/${entity}`, { ...data }, { headers })
       .then(() => {
         setIsOpen(!isOpen);
         Router.reload();
       })
       .catch((err) => {
-        const message = get(err, 'response.data.error', err.message);
+        const message = get(err, 'response.data.message', err.message);
         setErrors([...errors, { message }]);
       });
   };
 
   const onSubmit = (evt) => {
     evt.preventDefault();
-    logRequest();
+    sendRequest();
   };
   return (
     <div>
-      <Button color="info" onClick={() => setIsOpen(!isOpen)}>New Brand</Button>
+      <Button color="info" onClick={() => setIsOpen(!isOpen)}>New {title}</Button>
       <Modal isOpen={isOpen} toggle={() => setIsOpen(!isOpen)}>
-        <ModalHeader toggle={() => setIsOpen(!isOpen)}>New Brand</ModalHeader>
+        <ModalHeader toggle={() => setIsOpen(!isOpen)}>New {title}</ModalHeader>
         <ModalBody>
           {errors.map((err) => (
             <ErrorMessage key={err.message} error={err} />
@@ -52,10 +48,9 @@ const CreateBrand = () => {
                 name="description"
                 id="descriptionInput"
                 placeholder="something..."
-                onChange={(e) => setBrand({ ...brand, description: e.target.value })}
-                autoFocus
+                onChange={(e) => setData({ ...data, description: e.target.value })}
+                required
               />
-              {!isEmpty(errors) ? <FormText>The field cannot be empty</FormText> : null}
             </FormGroup>
             <Input className="btn btn-success my-2 button-small" type="submit" value="Submit" />{' '}
           </Form>
@@ -65,4 +60,4 @@ const CreateBrand = () => {
   );
 };
 
-export default CreateBrand;
+export default CreateBase;
