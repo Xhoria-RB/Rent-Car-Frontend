@@ -48,7 +48,7 @@ const CreateBase = ({ entity, title }) => {
                 name="description"
                 id="descriptionInput"
                 placeholder="something..."
-                onChange={(e) => setData({ ...data, description: e.target.value })}
+                onChange={(e) => setData({ ...data, [e.target.name]: e.target.value })}
                 required
               />
             </FormGroup>

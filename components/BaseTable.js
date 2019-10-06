@@ -4,7 +4,7 @@ import axios from 'axios';
 import Link from 'next/link';
 import PropTypes from 'prop-types';
 import {
-  Table, Col, Row, Container, Button
+  Table, Col, Row, Container, Button, Spinner
 } from 'reactstrap';
 import { queries } from '../utils/constants';
 import transformer from '../utils/transformers';
@@ -28,32 +28,37 @@ const BaseTable = ({ entity }) => {
     <Container>
       <Row>
         <Col sm="12" md={{ size: 8, offset: 2 }}>
-          <Table hover>
-            <thead>
-              <tr>
-                {transformedData && transformedData[0] && Object.keys(transformedData[0]).filter((data) => data !== 'id').map((key) => (
-                  <th className="text-capitalize" key={key.id}>{key}</th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {transformedData && transformedData.map((element) => (
-                <tr>
-                  {Object.values(element).map((field, i) => {
-                    if (i) {
-                      return (
-                        <Link href={`/${entity}/${element.id}`}>
-                          <td>{field}</td>
-                        </Link>
-                      );
-                    }
-                    return null;
-                  })}
-                  <Button color="danger" className="my-1" size="lg" onClick={() => handleDelete(element.id)}>X</Button>
-                </tr>
-              ))}
-            </tbody>
-          </Table>
+          {response && response.data
+            ? (
+              <Table hover>
+                <thead>
+                  <tr>
+                    {transformedData && transformedData[0] && Object.keys(transformedData[0]).filter((data) => data !== 'id').map((key) => (
+                      <th className="text-capitalize" key={key.id}>{key}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {transformedData && transformedData.map((element) => (
+                    <tr>
+                      {Object.values(element).map((field, i) => {
+                        if (i) {
+                          return (
+                            <Link href={`/${entity}/${element.id}`}>
+                              <td>{field}</td>
+                            </Link>
+                          );
+                        }
+                        return null;
+                      })}
+                      <Button color="danger" className="my-1" size="lg" onClick={() => handleDelete(element.id)}>X</Button>
+                    </tr>
+                  ))}
+                </tbody>
+              </Table>
+            )
+            : <center><Spinner style={{ width: '7rem', height: '7rem', margin: 'auto' }} color="dark" /></center>}
+
         </Col>
       </Row>
     </Container>
