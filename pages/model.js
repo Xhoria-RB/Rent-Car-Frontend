@@ -1,8 +1,9 @@
 import React from 'react';
 import Head from 'next/head';
 import Layout from '../components/Layout';
-import withAuth from '../components/lib/withAuth';
 import BaseTable from '../components/BaseTable';
+import withAuth from '../components/lib/withAuth';
+import CreateModel from '../components/CreateModel';
 
 
 const Model = ({ userCookie }) =>
@@ -11,6 +12,7 @@ const Model = ({ userCookie }) =>
       <Head>
         <title>Car model</title>
       </Head>
+      <CreateModel />
       <BaseTable entity="model" />
     </Layout>
   );

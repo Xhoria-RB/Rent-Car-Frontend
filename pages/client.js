@@ -1,8 +1,10 @@
 import React from 'react';
 import Head from 'next/head';
 import Layout from '../components/Layout';
-import withAuth from '../components/lib/withAuth';
 import BaseTable from '../components/BaseTable';
+import withAuth from '../components/lib/withAuth';
+import CreateClient from '../components/CreateClient';
+
 
 const Client = ({ userCookie }) =>
   (
@@ -10,6 +12,7 @@ const Client = ({ userCookie }) =>
       <Head>
         <title>Clients</title>
       </Head>
+      <CreateClient />
       <BaseTable entity="client" />
     </Layout>
   );

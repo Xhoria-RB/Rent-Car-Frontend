@@ -10,7 +10,7 @@ import {
 import Layout from '../components/Layout';
 import { url } from '../utils/config';
 import ErrorMessage from '../components/ErrorMessage';
-import withAuth from '../components/lib/withAuth';
+
 
 const Register = ({ userCookie }) => {
   const [user, setUser] = useState({});
@@ -90,4 +90,4 @@ Register.propTypes = {
   userCookie: PropTypes.objectOf(PropTypes.string).isRequired
 };
 
-export default withAuth(Register);
+export default Register;
