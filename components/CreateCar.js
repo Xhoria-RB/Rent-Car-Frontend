@@ -86,7 +86,6 @@ const CreateCar = () => {
     fillRequest();
   }, []);
 
-
   const sendRequest = () => {
     axios.post(`${url}/api/car`, { ...car }, { headers })
       .then(() => {
