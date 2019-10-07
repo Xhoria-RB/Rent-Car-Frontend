@@ -10,6 +10,7 @@ import {
 import Layout from '../../components/Layout';
 import { queries, dateFormat } from '../../utils/constants';
 import RenderItem from '../../components/RenderItem';
+import CreateRent from '../../components/CreateRent';
 
 const SingleInspection = () => {
   const router = useRouter();
@@ -76,13 +77,14 @@ const SingleInspection = () => {
           <Container>
             <Row>
               <Col sm="12" md={{ size: 10, offset: 2 }}>
+                <CreateRent content={content} />
                 <Form>
                   <Card className="my-5">
                     <CardHeader>Car</CardHeader>
                     <RenderItem data={car} />
                   </Card>
                   <Card className="my-5">
-                    <CardHeader>Inspectoion info</CardHeader>
+                    <CardHeader>Inspection info</CardHeader>
                     <RenderItem data={inspection} />
                   </Card>
                   <Card className="my-5">

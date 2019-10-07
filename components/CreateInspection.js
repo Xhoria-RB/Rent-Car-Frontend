@@ -43,7 +43,8 @@ const CreateInspection = () => {
       if (element.entityName === 'car') {
         dataHolder.car.push({
           id: element._id,
-          description: element.description
+          description: element.description,
+          carStatus: element.carStatus
         });
       }
       if (element.entityName === 'employee') {
@@ -147,7 +148,7 @@ const CreateInspection = () => {
                 required
               >
                 <option value="" selected>Select one</option>
-                {!isEmpty(selectData) ? selectData.car.map((el) => (
+                {!isEmpty(selectData) ? selectData.car.filter((e) => e.carStatus !== 'Rented').map((el) => (
                   <option key={el.id} value={el.id}>{el.description}</option>
                 )) : null}
               </Input>
