@@ -17,9 +17,10 @@ const CreateBase = ({ entity, title }) => {
   };
   const sendRequest = () => {
     axios.post(`${url}/api/${entity}`, { ...data }, { headers })
-      .then(() => {
+      .then((res) => {
         setIsOpen(!isOpen);
-        Router.reload();
+        // eslint-disable-next-line no-underscore-dangle
+        Router.push(`/${entity}/${res.data._id}`);
       })
       .catch((err) => {
         const message = get(err, 'response.data.errors.description.message', err.message);

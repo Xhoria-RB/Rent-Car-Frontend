@@ -53,9 +53,10 @@ const CreateModel = () => {
 
   const sendRequest = () => {
     axios.post(`${url}/api/model`, { ...model }, { headers })
-      .then(() => {
+      .then((res) => {
         setIsOpen(!isOpen);
-        Router.reload();
+        // eslint-disable-next-line no-underscore-dangle
+        Router.push(`/model/${res.data._id}`);
       })
       .catch((err) => {
         errorHandling(err);

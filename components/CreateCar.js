@@ -88,9 +88,10 @@ const CreateCar = () => {
 
   const sendRequest = () => {
     axios.post(`${url}/api/car`, { ...car }, { headers })
-      .then(() => {
+      .then((res) => {
         setIsOpen(!isOpen);
-        Router.reload();
+        // eslint-disable-next-line no-underscore-dangle
+        Router.push(`/car/${res.data._id}`);
       })
       .catch((err) => {
         errorHandling(err);
