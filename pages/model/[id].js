@@ -9,6 +9,7 @@ import {
 import Layout from '../../components/Layout';
 import { queries } from '../../utils/constants';
 import RenderItem from '../../components/RenderItem';
+import UpdateModel from '../../components/UpdateModel';
 
 const SingleModel = () => {
   const router = useRouter();
@@ -31,6 +32,7 @@ const SingleModel = () => {
       </Head>
       <Layout>
         <h1 className="text-center my-3">SingleModel</h1>
+        <UpdateModel />
         {content ? (
           <Container>
             <Row>

@@ -8,6 +8,7 @@ import {
 import Layout from '../../components/Layout';
 import { queries } from '../../utils/constants';
 import RenderItem from '../../components/RenderItem';
+import UpdateBase from '../../components/UpdateBase';
 
 const CarType = () => {
   const router = useRouter();
@@ -29,6 +30,7 @@ const CarType = () => {
       </Head>
       <Layout>
         <h1 className="text-center my-3">SingleCarType</h1>
+        <UpdateBase entity={queries.car_type} title="Car Type" />
         {content ? (
           <Container>
             <Row>
