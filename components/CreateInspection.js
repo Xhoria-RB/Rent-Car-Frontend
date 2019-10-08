@@ -31,8 +31,7 @@ const CreateInspection = () => {
   };
 
   const dataTransformer = (res) => {
-    const { data } = res;
-    // eslint-disable-next-line array-callback-return
+    const { data = [] } = res;
     data.map((element) => {
       if (element.entityName === 'client') {
         dataHolder.client.push({
@@ -53,6 +52,7 @@ const CreateInspection = () => {
           description: element.fullName
         });
       }
+      return null;
     });
     setSelectData({ ...selectData, ...dataHolder });
   };
