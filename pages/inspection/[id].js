@@ -10,6 +10,7 @@ import {
 import Layout from '../../components/Layout';
 import { queries, dateFormat } from '../../utils/constants';
 import RenderItem from '../../components/RenderItem';
+import CreateRent from '../../components/CreateRent';
 
 const SingleInspection = () => {
   const router = useRouter();
@@ -20,6 +21,7 @@ const SingleInspection = () => {
   const transformer = (data) => ({
     // eslint-disable-next-line no-underscore-dangle
     id: data._id,
+    status: data.status,
     car: {
       id: get(data, 'carID._id'),
       description: get(data, 'carID.description', ''),
@@ -76,13 +78,14 @@ const SingleInspection = () => {
           <Container>
             <Row>
               <Col sm="12" md={{ size: 10, offset: 2 }}>
+                {content.status && <CreateRent content={content} />}
                 <Form>
                   <Card className="my-5">
                     <CardHeader>Car</CardHeader>
                     <RenderItem data={car} />
                   </Card>
                   <Card className="my-5">
-                    <CardHeader>Inspectoion info</CardHeader>
+                    <CardHeader>Inspection info</CardHeader>
                     <RenderItem data={inspection} />
                   </Card>
                   <Card className="my-5">

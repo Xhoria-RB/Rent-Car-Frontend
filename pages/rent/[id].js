@@ -1,15 +1,17 @@
 import React from 'react';
 import Head from 'next/head';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 import useAxios from 'axios-hooks';
 import moment from 'moment';
 import get from 'lodash/get';
 import {
-  Row, Col, Form, Container, Spinner, Card, CardHeader
+  Row, Col, Form, Container, Spinner, Card, CardHeader, Button
 } from 'reactstrap';
 import Layout from '../../components/Layout';
 import { queries, dateFormat } from '../../utils/constants';
 import RenderItem from '../../components/RenderItem';
+import Return from '../../components/Return';
 
 const SingleRent = () => {
   const router = useRouter();
@@ -21,6 +23,8 @@ const SingleRent = () => {
   const transformer = (data) => ({
     // eslint-disable-next-line no-underscore-dangle
     id: data._id,
+    inspectionID: data.inspectionID,
+    status: data.status,
     car: {
       id: get(data, 'carID._id'),
       description: get(data, 'carID.description', ''),
@@ -68,6 +72,10 @@ const SingleRent = () => {
         <h1 className="text-center my-3">SingleRent</h1>
         {content ? (
           <Container>
+            <Link href={`/inspection/${content.inspectionID}`}>
+              <Button color="secondary">See Inspection</Button>
+            </Link>
+            <Return content={content} />
             <Row>
               <Col sm="12" md={{ size: 10, offset: 2 }}>
                 <Form>

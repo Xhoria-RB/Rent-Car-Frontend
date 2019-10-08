@@ -17,9 +17,10 @@ const CreateClient = () => {
   };
   const sendRequest = () => {
     axios.post(`${url}/api/client`, { ...client }, { headers })
-      .then(() => {
+      .then((res) => {
         setIsOpen(!isOpen);
-        Router.reload();
+        // eslint-disable-next-line no-underscore-dangle
+        Router.push(`/client/${res.data._id}`);
       })
       .catch((err) => {
         const message = get(err, 'response.data.error', err.message);

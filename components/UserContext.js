@@ -11,13 +11,14 @@ class UserProvider extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: {},
-      loggedIn: false
+      user: {},
+      loggedIn: false,
+      inspection: ''
     };
 
     this.logIn = (data) => {
       this.setState({
-        username: { ...data },
+        user: { ...data },
         loggedIn: true
       }, () => {
         Cookie.set('user', data);
@@ -27,7 +28,7 @@ class UserProvider extends Component {
 
     this.logOut = () => {
       this.setState({
-        username: null,
+        user: null,
         loggedIn: false
       }, () => {
         Cookie.remove('user');

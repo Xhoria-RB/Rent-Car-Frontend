@@ -3,6 +3,7 @@ import Head from 'next/head';
 import Layout from '../components/Layout';
 import withAuth from '../components/lib/withAuth';
 import BaseTable from '../components/BaseTable';
+import CreateInspection from '../components/CreateInspection';
 
 const Inspection = ({ userCookie }) =>
   (
@@ -10,6 +11,7 @@ const Inspection = ({ userCookie }) =>
       <Head>
         <title>Car Inspections</title>
       </Head>
+      <CreateInspection />
       <BaseTable entity="inspection" />
     </Layout>
   );
