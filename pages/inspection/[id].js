@@ -21,6 +21,7 @@ const SingleInspection = () => {
   const transformer = (data) => ({
     // eslint-disable-next-line no-underscore-dangle
     id: data._id,
+    status: data.status,
     car: {
       id: get(data, 'carID._id'),
       description: get(data, 'carID.description', ''),
@@ -77,7 +78,7 @@ const SingleInspection = () => {
           <Container>
             <Row>
               <Col sm="12" md={{ size: 10, offset: 2 }}>
-                <CreateRent content={content} />
+                {content.status && <CreateRent content={content} />}
                 <Form>
                   <Card className="my-5">
                     <CardHeader>Car</CardHeader>

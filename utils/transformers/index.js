@@ -7,6 +7,7 @@ import fuelTypeTransformer from './fuelTypeTransformer';
 import inspectionTransformer from './inspectionTransformer';
 import modelTransformer from './modelTransformer';
 import rentTransformer from './rentTransformer';
+import reportTransformer from './reportTransformer';
 
 module.exports = {
   brand: brandTransformer,
@@ -17,5 +18,6 @@ module.exports = {
   fuel_type: fuelTypeTransformer,
   inspection: inspectionTransformer,
   model: modelTransformer,
-  rent: rentTransformer
+  rent: rentTransformer,
+  report: reportTransformer
 };

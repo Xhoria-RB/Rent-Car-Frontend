@@ -43,6 +43,7 @@ module.exports = {
     rent: `${url}/api/rent`,
     inspection: `${url}/api/inspection`,
     client: `${url}/api/client`,
+    report: `${url}/api/report`
   },
   dateFormat: 'MM/DD/YYYY'
 };

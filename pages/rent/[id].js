@@ -11,6 +11,7 @@ import {
 import Layout from '../../components/Layout';
 import { queries, dateFormat } from '../../utils/constants';
 import RenderItem from '../../components/RenderItem';
+import Return from '../../components/Return';
 
 const SingleRent = () => {
   const router = useRouter();
@@ -23,6 +24,7 @@ const SingleRent = () => {
     // eslint-disable-next-line no-underscore-dangle
     id: data._id,
     inspectionID: data.inspectionID,
+    status: data.status,
     car: {
       id: get(data, 'carID._id'),
       description: get(data, 'carID.description', ''),
@@ -73,6 +75,7 @@ const SingleRent = () => {
             <Link href={`/inspection/${content.inspectionID}`}>
               <Button color="secondary">See Inspection</Button>
             </Link>
+            <Return content={content} />
             <Row>
               <Col sm="12" md={{ size: 10, offset: 2 }}>
                 <Form>
