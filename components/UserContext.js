@@ -22,7 +22,7 @@ class UserProvider extends Component {
         loggedIn: true
       }, () => {
         Cookie.set('user', data);
-        Router.push('/');
+        Router.push('/dashboard');
       });
     };
 

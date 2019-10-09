@@ -69,6 +69,11 @@ const nav = ({ user }) => {
                 <NavLink href="/register">Sign In</NavLink>
               </NavItem>
             )}
+            {user.id && (
+              <NavItem>
+                <NavLink href="/dashboard">Profile</NavLink>
+              </NavItem>
+            )}
           </Nav>
         </Collapse>
       </Container>

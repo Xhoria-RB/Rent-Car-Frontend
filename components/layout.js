@@ -17,7 +17,7 @@ const Layout = ({ children, user = {}, light = false }) => (
       />
     </Head>
 
-    { !light && <Nav user={user} />}
+    {!light && <Nav user={user} />}
 
     {children}
 

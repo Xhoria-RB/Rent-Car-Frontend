@@ -8,6 +8,7 @@ import {
 import Layout from '../../components/Layout';
 import { queries } from '../../utils/constants';
 import RenderItem from '../../components/RenderItem';
+import UpdateEmployee from '../../components/UpdateEmployee';
 
 
 const SingleEmployee = () => {
@@ -33,6 +34,7 @@ const SingleEmployee = () => {
       </Head>
       <Layout>
         <h1 className="text-center my-3">SingleEmployee</h1>
+        <UpdateEmployee />
         {content ? (
           <Container>
             <Row>
