@@ -13,7 +13,7 @@ const Dashboard = ({ userCookie }) =>
       </Head>
       <div>
         <h1>Hello</h1>
-        <UpdateProfile />
+        <UpdateProfile user={userCookie} />
       </div>
     </Layout>
   );

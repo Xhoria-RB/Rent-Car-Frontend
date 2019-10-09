@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import Router from 'next/router';
+import React, { useState, useContext } from 'react';
 import {
   Button, Modal, ModalHeader, ModalBody, Label, Input, Form, FormGroup
 } from 'reactstrap';
@@ -8,19 +7,21 @@ import isEmpty from 'lodash/isEmpty';
 import get from 'lodash/get';
 import { url } from '../utils/config';
 import ErrorMessage from './ErrorMessage';
+import UserContext from './UserContext';
 
-const UpdateProfile = () => {
+const UpdateProfile = ({ user }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [employee, setEmployee] = useState({});
   const [errors, setErrors] = useState([]);
+  const { login } = useContext(UserContext);
   const headers = {
     'Content-Type': 'application/json'
   };
   const sendRequest = () => {
-    axios.put(`${url}/api/employee`, { ...employee }, { headers })
-      .then(() => {
+    axios.put(`${url}/api/employee/${user.id}`, { ...employee }, { headers })
+      .then((res) => {
         setIsOpen(!isOpen);
-        Router.reload();
+        login(res.data);
       })
       .catch((err) => {
         const message = get(err, 'response.data.error', err.message);
