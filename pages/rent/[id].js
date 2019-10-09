@@ -66,7 +66,7 @@ const SingleRent = () => {
   return (
     <div>
       <Head>
-        <title>Home</title>
+        <title>Single rent</title>
       </Head>
       <Layout>
         <h1 className="text-center my-3">SingleRent</h1>

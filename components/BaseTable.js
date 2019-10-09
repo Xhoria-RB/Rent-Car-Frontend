@@ -33,14 +33,16 @@ const BaseTable = ({ entity }) => {
               <Table hover>
                 <thead>
                   <tr>
+                    <th>#</th>
                     {transformedData && transformedData[0] && Object.keys(transformedData[0]).filter((data) => data !== 'id').map((key) => (
                       <th className="text-capitalize" key={key.id}>{key}</th>
                     ))}
                   </tr>
                 </thead>
                 <tbody>
-                  {transformedData && transformedData.map((element) => (
+                  {transformedData && transformedData.map((element, num) => (
                     <tr>
+                      <td>{num + 1}</td>
                       {Object.values(element).map((field, i) => {
                         if (i) {
                           return (
