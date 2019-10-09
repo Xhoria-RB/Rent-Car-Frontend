@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {
   Container, Row
 } from 'reactstrap';
-import Layout from '../components/Layout';
+import Layout from '../components/layout';
 import withAuth from '../components/lib/withAuth';
 import DealerCard from '../components/DealerCard';
 import { services } from '../utils/constants';

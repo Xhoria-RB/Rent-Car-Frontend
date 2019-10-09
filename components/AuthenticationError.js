@@ -4,7 +4,7 @@ import {
   Jumbotron, Row, Col, Button
 } from 'reactstrap';
 
-import Layout from './Layout';
+import Layout from './layout';
 import Login from './Login';
 
 function AuthenticationError() {

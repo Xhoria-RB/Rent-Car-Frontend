@@ -7,7 +7,7 @@ import get from 'lodash/get';
 import {
   Col, Button, Form, FormGroup, Label, Input, Row, Container, Jumbotron
 } from 'reactstrap';
-import Layout from '../components/Layout';
+import Layout from '../components/layout';
 import { url } from '../utils/config';
 import ErrorMessage from '../components/ErrorMessage';
 
