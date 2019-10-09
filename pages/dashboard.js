@@ -1,6 +1,6 @@
 import React from 'react';
 import Head from 'next/head';
-import Layout from '../components/Layout';
+import Layout from '../components/layout';
 import withAuth from '../components/lib/withAuth';
 import UpdateProfile from '../components/UpdateProfile';
 

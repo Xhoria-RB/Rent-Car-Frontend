@@ -8,7 +8,7 @@ import get from 'lodash/get';
 import {
   Row, Col, Form, Container, Spinner, Card, CardHeader, Button
 } from 'reactstrap';
-import Layout from '../../components/Layout';
+import Layout from '../../components/layout';
 import { queries, dateFormat } from '../../utils/constants';
 import RenderItem from '../../components/RenderItem';
 import Return from '../../components/Return';

@@ -1,7 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
-import Layout from '../components/Layout';
+import Layout from '../components/layout';
 import withAuth from '../components/lib/withAuth';
 import BaseTable from '../components/BaseTable';
 

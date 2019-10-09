@@ -5,7 +5,7 @@ import useAxios from 'axios-hooks';
 import {
   Row, Col, Form, Container, Spinner, Card, CardHeader
 } from 'reactstrap';
-import Layout from '../../components/Layout';
+import Layout from '../../components/layout';
 import { queries } from '../../utils/constants';
 import RenderItem from '../../components/RenderItem';
 import UpdateBase from '../../components/UpdateBase';
