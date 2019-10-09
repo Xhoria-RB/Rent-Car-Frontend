@@ -8,6 +8,7 @@ import axios from 'axios';
 import get from 'lodash/get';
 import isEmpty from 'lodash/isEmpty';
 import { url } from '../utils/config';
+import { validateUpdate } from '../utils/validator';
 import ErrorMessage from './ErrorMessage';
 
 const UpdateCar = () => {
@@ -65,15 +66,6 @@ const UpdateCar = () => {
     });
     setSelectData({ ...selectData, ...dataHolder });
   };
-
-  const verifyUpdate = () => {
-    if (!isEmpty(car) && (car.description !== '' || car.brandID !== '')) {
-      return true;
-    }
-    setErrors([...errors, { message: 'Fields cannot be empty' }]);
-    return false;
-  };
-
   const fillRequest = () => {
     axios.get(`${url}/api/model`)
       .then((res) => dataTransformer(res))
@@ -98,8 +90,7 @@ const UpdateCar = () => {
 
   const sendRequest = () => {
     axios.put(`${url}/api/car/${id}`, { ...car }, { headers })
-      .then((res) => {
-        console.log(res);
+      .then(() => {
         setIsOpen(!isOpen);
         Router.reload();
       })
@@ -110,8 +101,11 @@ const UpdateCar = () => {
 
   const onSubmit = (evt) => {
     evt.preventDefault();
-    if (verifyUpdate()) {
+    if (validateUpdate(car)) {
       sendRequest();
+    }
+    else {
+      setErrors([...errors, { message: 'Fields cannot be empty' }]);
     }
   };
   return (
