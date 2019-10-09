@@ -8,6 +8,7 @@ import {
 import Layout from '../../components/Layout';
 import { queries } from '../../utils/constants';
 import RenderItem from '../../components/RenderItem';
+import UpdateClient from '../../components/UpdateClient';
 
 const SingleClient = () => {
   const router = useRouter();
@@ -32,6 +33,7 @@ const SingleClient = () => {
       </Head>
       <Layout>
         <h1 className="text-center my-3">SingleClient</h1>
+        <UpdateClient />
         {content ? (
           <Container>
             <Row>

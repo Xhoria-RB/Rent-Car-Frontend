@@ -42,7 +42,8 @@ const UpdateModel = () => {
     setSelectData({ ...selectData, ...dataHolder });
   };
   const verifyUpdate = () => {
-    if (!isEmpty(model) && (model.description !== '' || model.brandID !== '')) {
+    // if (!isEmpty(model) && (model.description !== '' || model.brandID !== '')) {
+    if (!isEmpty(model) && (Object.values(model).includes('') > -1)) {
       return true;
     }
     setErrors([...errors, { message: 'Fields cannot be empty' }]);

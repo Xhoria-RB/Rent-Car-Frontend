@@ -9,6 +9,7 @@ import {
 import Layout from '../../components/Layout';
 import { queries } from '../../utils/constants';
 import RenderItem from '../../components/RenderItem';
+import UpdateCar from '../../components/UpdateCar';
 
 const SingleCar = () => {
   const router = useRouter();
@@ -38,6 +39,7 @@ const SingleCar = () => {
       </Head>
       <Layout>
         <h1 className="text-center my-3">SingleCar</h1>
+        <UpdateCar />
         {content ? (
           <Container>
             <Row>
