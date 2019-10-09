@@ -30,8 +30,12 @@ const SingleFuelType = () => {
         <title>Home</title>
       </Head>
       <Layout>
-        <h1 className="text-center my-3">SingleFuelType</h1>
-        <UpdateBase entity={queries.fuel_type} title="Fuel Type" />
+        <h1 className="text-center my-3">Fuel Type details</h1>
+        <Row>
+          <Col sm={{ size: 'auto', offset: 9 }}>
+            <UpdateBase entity={queries.fuel_type} title="Fuel Type" />
+          </Col>
+        </Row>
         {content ? (
           <Container>
             <Row>

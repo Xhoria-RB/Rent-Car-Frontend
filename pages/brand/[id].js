@@ -29,8 +29,12 @@ const SingleBrand = () => {
         <title>Home</title>
       </Head>
       <Layout>
-        <h1 className="text-center my-3">SingleCarType</h1>
-        <UpdateBase entity={queries.brand} title="brand" />
+        <h1 className="text-center my-3">Brand details</h1>
+        <Row>
+          <Col sm={{ size: 'auto', offset: 9 }}>
+            <UpdateBase entity={queries.brand} title="brand" />
+          </Col>
+        </Row>
         {content ? (
           <Container>
             <Row>

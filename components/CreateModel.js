@@ -69,7 +69,7 @@ const CreateModel = () => {
   };
   return (
     <div>
-      <Button color="info" onClick={() => setIsOpen(!isOpen)}>New Model</Button>
+      <Button color="success" onClick={() => setIsOpen(!isOpen)}>New Model</Button>
       <Modal isOpen={isOpen} toggle={() => setIsOpen(!isOpen)}>
         <ModalHeader toggle={() => setIsOpen(!isOpen)}>New Model</ModalHeader>
         <ModalBody>

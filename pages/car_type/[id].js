@@ -29,8 +29,12 @@ const CarType = () => {
         <title>Home</title>
       </Head>
       <Layout>
-        <h1 className="text-center my-3">SingleCarType</h1>
-        <UpdateBase entity={queries.car_type} title="Car Type" />
+        <h1 className="text-center my-3">Car Type details</h1>
+        <Row>
+          <Col sm={{ size: 'auto', offset: 9 }}>
+            <UpdateBase entity={queries.car_type} title="Car Type" />
+          </Col>
+        </Row>
         {content ? (
           <Container>
             <Row>

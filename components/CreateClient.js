@@ -34,7 +34,7 @@ const CreateClient = () => {
   };
   return (
     <div>
-      <Button color="info" onClick={() => setIsOpen(!isOpen)}>New Client</Button>
+      <Button color="success" onClick={() => setIsOpen(!isOpen)}>New Client</Button>
       <Modal isOpen={isOpen} toggle={() => setIsOpen(!isOpen)}>
         <ModalHeader toggle={() => setIsOpen(!isOpen)}>New Client</ModalHeader>
         <ModalBody>

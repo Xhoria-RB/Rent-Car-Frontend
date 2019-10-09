@@ -32,8 +32,12 @@ const SingleClient = () => {
         <title>Home</title>
       </Head>
       <Layout>
-        <h1 className="text-center my-3">SingleClient</h1>
-        <UpdateClient />
+        <h1 className="text-center my-3">Client details</h1>
+        <Row>
+          <Col sm={{ size: 'auto', offset: 9 }}>
+            <UpdateClient />
+          </Col>
+        </Row>
         {content ? (
           <Container>
             <Row>

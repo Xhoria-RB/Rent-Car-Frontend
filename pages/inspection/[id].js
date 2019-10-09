@@ -74,13 +74,22 @@ const SingleInspection = () => {
         <title>Home</title>
       </Head>
       <Layout>
-        <h1 className="text-center my-3">SingleInspection</h1>
-        <UpdateInspection />
+        <h1 className="text-center my-3">Inspection chart</h1>
         {content ? (
           <Container>
             <Row>
               <Col sm="12" md={{ size: 10, offset: 2 }}>
-                {content.status && <CreateRent content={content} />}
+                {content.status
+                  && (
+                    <Row>
+                      <Col sm={{ size: 'auto', offset: 7 }}>
+                        <UpdateInspection />
+                      </Col>
+                      <Col sm={{ size: 'auto', offset: 1 }}>
+                        <CreateRent content={content} />
+                      </Col>
+                    </Row>
+                  )}
                 <Form>
                   <Card className="my-5">
                     <CardHeader>Car</CardHeader>

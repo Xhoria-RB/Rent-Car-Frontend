@@ -123,7 +123,7 @@ const NewReport = () => {
             <Col sm="5">
               <FormGroup check inline>
                 <Input type="text" name="search" placeholder="Search" onChange={(e) => setParams({ ...params, [e.target.name]: e.target.value })} />
-                <Button onClick={filterHandle}>Search</Button>
+                <Button color="primary" onClick={filterHandle}>Search</Button>
               </FormGroup>
             </Col>
             <Col sm="2">
