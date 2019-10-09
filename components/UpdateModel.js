@@ -7,6 +7,7 @@ import {
 import axios from 'axios';
 import get from 'lodash/get';
 import isEmpty from 'lodash/isEmpty';
+import { validateUpdate } from '../utils/validator';
 import { url } from '../utils/config';
 import ErrorMessage from './ErrorMessage';
 
@@ -41,14 +42,6 @@ const UpdateModel = () => {
     });
     setSelectData({ ...selectData, ...dataHolder });
   };
-  const verifyUpdate = () => {
-    // if (!isEmpty(model) && (model.description !== '' || model.brandID !== '')) {
-    if (!isEmpty(model) && (Object.values(model).includes('') > -1)) {
-      return true;
-    }
-    setErrors([...errors, { message: 'Fields cannot be empty' }]);
-    return false;
-  };
 
   const fillRequest = () => {
     axios.get(`${url}/api/brand`)
@@ -75,8 +68,11 @@ const UpdateModel = () => {
 
   const onSubmit = (evt) => {
     evt.preventDefault();
-    if (verifyUpdate()) {
+    if (validateUpdate(model)) {
       sendRequest();
+    }
+    else {
+      setErrors([...errors, { message: 'Fields cannot be empty' }]);
     }
   };
   return (

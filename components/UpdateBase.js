@@ -4,8 +4,8 @@ import {
   Button, Modal, ModalHeader, ModalBody, Label, Input, Form, FormGroup
 } from 'reactstrap';
 import axios from 'axios';
-import isEmpty from 'lodash/isEmpty';
 import get from 'lodash/get';
+import { validateUpdate } from '../utils/validator';
 import ErrorMessage from './ErrorMessage';
 
 const UpdateBase = ({ entity, title }) => {
@@ -28,18 +28,14 @@ const UpdateBase = ({ entity, title }) => {
         setErrors([...errors, { message }]);
       });
   };
-  const verifyUpdate = () => {
-    if (!isEmpty(data) && data.description !== '') {
-      return true;
-    }
-    setErrors([...errors, { message: 'Description cannot be empty' }]);
-    return false;
-  };
 
   const onSubmit = (evt) => {
     evt.preventDefault();
-    if (verifyUpdate()) {
+    if (validateUpdate(data)) {
       sendRequest();
+    }
+    else {
+      setErrors([...errors, { message: 'Description cannot be empty' }]);
     }
   };
   return (

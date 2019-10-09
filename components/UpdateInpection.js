@@ -7,6 +7,7 @@ import {
 import axios from 'axios';
 import get from 'lodash/get';
 import isEmpty from 'lodash/isEmpty';
+import { validateUpdate } from '../utils/validator';
 import { url } from '../utils/config';
 import ErrorMessage from './ErrorMessage';
 
@@ -68,19 +69,14 @@ const UpdateInspection = () => {
         errorHandling(err);
       });
   };
-  const verifyUpdate = () => {
-    // if (!isEmpty(model) && (model.description !== '' || model.brandID !== '')) {
-    if (!isEmpty(newInspection) && (Object.values(newInspection).includes('') > -1)) {
-      return true;
-    }
-    setErrors([...errors, { message: 'Fields cannot be empty' }]);
-    return false;
-  };
 
   const onSubmit = (evt) => {
     evt.preventDefault();
-    if (verifyUpdate()) {
+    if (validateUpdate(newInspection)) {
       sendRequest();
+    }
+    else {
+      setErrors([...errors, { message: 'Fields cannot be empty' }]);
     }
   };
   return (

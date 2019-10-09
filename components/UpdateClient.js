@@ -4,8 +4,8 @@ import {
   Button, Modal, ModalHeader, ModalBody, Label, Input, Form, FormGroup
 } from 'reactstrap';
 import axios from 'axios';
-import isEmpty from 'lodash/isEmpty';
 import get from 'lodash/get';
+import { validateUpdate } from '../utils/validator';
 import { url } from '../utils/config';
 import ErrorMessage from './ErrorMessage';
 
@@ -31,19 +31,14 @@ const UpdateClient = () => {
         setErrors([...errors, { message }]);
       });
   };
-  const verifyUpdate = () => {
-    // if (!isEmpty(model) && (model.description !== '' || model.brandID !== '')) {
-    if (!isEmpty(client) && (Object.values(client).includes('') > -1)) {
-      return true;
-    }
-    setErrors([...errors, { message: 'Fields cannot be empty' }]);
-    return false;
-  };
 
   const onSubmit = (evt) => {
     evt.preventDefault();
-    if (verifyUpdate()) {
+    if (validateUpdate(client)) {
       sendRequest();
+    }
+    else {
+      setErrors([...errors, { message: 'Fields cannot be empty' }]);
     }
   };
   return (

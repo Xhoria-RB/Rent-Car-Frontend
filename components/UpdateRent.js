@@ -7,6 +7,7 @@ import {
 import axios from 'axios';
 import get from 'lodash/get';
 import { url } from '../utils/config';
+import { validateUpdate } from '../utils/validator';
 import ErrorMessage from './ErrorMessage';
 
 const UpdateRent = ({ content }) => {
@@ -57,7 +58,12 @@ const UpdateRent = ({ content }) => {
 
   const onSubmit = (evt) => {
     evt.preventDefault();
-    sendRequest();
+    if (validateUpdate(newRent)) {
+      sendRequest();
+    }
+    else {
+      setErrors([...errors, { message: 'Fields cannot be empty' }]);
+    }
   };
   return (
     <div>
