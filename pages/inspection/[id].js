@@ -11,6 +11,7 @@ import Layout from '../../components/Layout';
 import { queries, dateFormat } from '../../utils/constants';
 import RenderItem from '../../components/RenderItem';
 import CreateRent from '../../components/CreateRent';
+import UpdateInspection from '../../components/UpdateInpection';
 
 const SingleInspection = () => {
   const router = useRouter();
@@ -74,6 +75,7 @@ const SingleInspection = () => {
       </Head>
       <Layout>
         <h1 className="text-center my-3">SingleInspection</h1>
+        <UpdateInspection />
         {content ? (
           <Container>
             <Row>

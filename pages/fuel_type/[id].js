@@ -8,6 +8,7 @@ import {
 import Layout from '../../components/Layout';
 import { queries } from '../../utils/constants';
 import RenderItem from '../../components/RenderItem';
+import UpdateBase from '../../components/UpdateBase';
 
 const SingleFuelType = () => {
   const router = useRouter();
@@ -30,6 +31,7 @@ const SingleFuelType = () => {
       </Head>
       <Layout>
         <h1 className="text-center my-3">SingleFuelType</h1>
+        <UpdateBase entity={queries.fuel_type} title="Fuel Type" />
         {content ? (
           <Container>
             <Row>
