@@ -1,13 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Head from 'next/head';
-import { Row, Col, Container } from 'reactstrap';
+import {
+  Row, Col, Container, FormGroup, Input
+} from 'reactstrap';
 import Layout from '../components/layout';
 import withAuth from '../components/lib/withAuth';
 import BaseTable from '../components/BaseTable';
 import CreateInspection from '../components/CreateInspection';
 
-const Inspection = ({ userCookie }) =>
-  (
+const Inspection = ({ userCookie }) => {
+  const [params, setParams] = useState({});
+  return (
     <Layout user={userCookie}>
       <Head>
         <title>Inspections</title>
@@ -19,6 +22,13 @@ const Inspection = ({ userCookie }) =>
           </div>
         </div>
         <Row>
+          <Col sm={{ size: 6, offset: 7 }}>
+            <FormGroup check inline>
+              <Input type="text" name="search" placeholder="Search" onChange={(e) => setParams({ ...params, [e.target.name]: e.target.value })} />
+            </FormGroup>
+          </Col>
+        </Row>
+        <Row>
           <Col sm={{ size: 'auto', offset: 2 }}>
             <CreateInspection />
           </Col>
@@ -26,11 +36,12 @@ const Inspection = ({ userCookie }) =>
         <div className="my-3">
           <p className="text-center">Latest inspections</p>
           <Container>
-            <BaseTable entity="inspection" />
+            <BaseTable entity="inspection" params={params} />
           </Container>
         </div>
       </div>
     </Layout>
   );
+};
 
 export default withAuth(Inspection);
