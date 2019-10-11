@@ -33,8 +33,12 @@ const SingleEmployee = () => {
         <title>Home</title>
       </Head>
       <Layout>
-        <h1 className="text-center my-3">SingleEmployee</h1>
-        <UpdateEmployee />
+        <h1 className="text-center my-3">Employee details</h1>
+        <Row>
+          <Col sm={{ size: 'auto', offset: 9 }}>
+            <UpdateEmployee />
+          </Col>
+        </Row>
         {content ? (
           <Container>
             <Row>

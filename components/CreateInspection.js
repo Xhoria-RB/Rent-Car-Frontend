@@ -94,7 +94,7 @@ const CreateInspection = () => {
   };
   return (
     <div>
-      <Button color="info" onClick={() => setIsOpen(!isOpen)}>New Inspection</Button>
+      <Button color="success" onClick={() => setIsOpen(!isOpen)}>New Inspection</Button>
       <Modal isOpen={isOpen} toggle={() => setIsOpen(!isOpen)}>
         <ModalHeader toggle={() => setIsOpen(!isOpen)}>New Inspection</ModalHeader>
         <ModalBody>

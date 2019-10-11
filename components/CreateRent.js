@@ -57,7 +57,7 @@ const CreateRent = ({ content }) => {
   };
   return (
     <div>
-      <Button color="info" onClick={() => setIsOpen(!isOpen)}>New Rent</Button>
+      <Button color="success" onClick={() => setIsOpen(!isOpen)}>New Rent</Button>
       <Modal isOpen={isOpen} toggle={() => setIsOpen(!isOpen)}>
         <ModalHeader toggle={() => setIsOpen(!isOpen)}>New Rent</ModalHeader>
         <ModalBody>

@@ -66,38 +66,57 @@ const SingleRent = () => {
   return (
     <div>
       <Head>
-        <title>Home</title>
+        <title>Single rent</title>
       </Head>
       <Layout>
-        <h1 className="text-center my-3">SingleRent</h1>
+        <h1 className="text-center my-3">Rent details</h1>
         {content ? (
           <Container>
-            <Link href={`/inspection/${content.inspectionID}`}>
-              <Button color="secondary">See Inspection</Button>
-            </Link>
-            <Return content={content} />
             <Row>
-              <Col sm="12" md={{ size: 10, offset: 2 }}>
-                <Form>
+              <Col sm={{ size: 'auto', offset: 7 }}>
+                <Link href={`/inspection/${content.inspectionID}`}>
+                  <Button color="secondary">See Inspection</Button>
+                </Link>
+              </Col>
+              <Col sm={{ size: 'auto', offset: 1 }}>
+                <Return content={content} />
+              </Col>
+            </Row>
+            <Form>
+              <Row>
+                <Col xs="6">
+                  <div className="mt-5">
+                    <img
+                      src="http://franchise.carolsaundersswimschool.co.uk/wp-content/uploads/2017/02/img-placeholder.png"
+                      alt="img-placeholder"
+                      style={{ width: '100%', height: '330px', marginBottom: '10px' }}
+                    />
+                  </div>
+                  <Card>
+                    <CardHeader>Rent Info</CardHeader>
+                    <RenderItem data={rent} />
+                  </Card>
+                </Col>
+                <Col xs="6">
                   <Card className="my-5">
                     <CardHeader>Car</CardHeader>
                     <RenderItem data={car} />
                   </Card>
-                  <Card className="my-5">
-                    <CardHeader>Rent Info</CardHeader>
-                    <RenderItem data={rent} />
-                  </Card>
-                  <Card className="my-5">
-                    <CardHeader>Client</CardHeader>
-                    <RenderItem data={client} />
-                  </Card>
+                </Col>
+                <Col xs="6">
                   <Card className="my-5">
                     <CardHeader>Employee</CardHeader>
                     <RenderItem data={employee} />
                   </Card>
-                </Form>
-              </Col>
-            </Row>
+                </Col>
+                <Col xs="6">
+                  <Card className="my-5">
+                    <CardHeader>Client</CardHeader>
+                    <RenderItem data={client} />
+                  </Card>
+                </Col>
+              </Row>
+            </Form>
           </Container>
         ) : <center><Spinner style={{ width: '7rem', height: '7rem', margin: 'auto' }} color="dark" /></center>}
       </Layout>

@@ -104,7 +104,7 @@ const CreateCar = () => {
   };
   return (
     <div>
-      <Button color="info" onClick={() => setIsOpen(!isOpen)}>New Car</Button>
+      <Button color="success" onClick={() => setIsOpen(!isOpen)}>New Car</Button>
       <Modal isOpen={isOpen} toggle={() => setIsOpen(!isOpen)}>
         <ModalHeader toggle={() => setIsOpen(!isOpen)}>New Car</ModalHeader>
         <ModalBody>

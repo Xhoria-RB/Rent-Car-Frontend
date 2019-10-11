@@ -68,12 +68,12 @@ const NewReport = () => {
   const printHandle = () => (window && window.print ? window.print() : null);
 
   return (
-    <div>
+    <div className="mx-4 py-4">
       <Container>
         <h1>Hello</h1>
-        <div id="no-print">
+        <div id="no-print" className="my-4">
           <Row>
-            <Col sm="4">
+            <Col sm="5">
               <FormGroup check inline>
                 <Label check>
                   <Input
@@ -120,10 +120,10 @@ const NewReport = () => {
                 </Label>
               </FormGroup>
             </Col>
-            <Col sm="6">
+            <Col sm="5">
               <FormGroup check inline>
                 <Input type="text" name="search" placeholder="Search" onChange={(e) => setParams({ ...params, [e.target.name]: e.target.value })} />
-                <Button onClick={filterHandle}>Search</Button>
+                <Button color="primary" onClick={filterHandle}>Search</Button>
               </FormGroup>
             </Col>
             <Col sm="2">
@@ -140,14 +140,16 @@ const NewReport = () => {
               <Table hover>
                 <thead>
                   <tr>
+                    <th>#</th>
                     {content && content[0] && Object.keys(content[0]).filter((data) => data !== 'id').map((key) => (
                       <th className="text-capitalize" key={key.id}>{key}</th>
                     ))}
                   </tr>
                 </thead>
                 <tbody>
-                  {content && content.map((element) => (
+                  {content && content.map((element, num) => (
                     <tr>
+                      <td>{num + 1}</td>
                       {Object.values(element).map((field, i) => {
                         if (i) {
                           return (

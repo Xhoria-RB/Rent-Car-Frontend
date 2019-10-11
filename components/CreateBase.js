@@ -33,8 +33,8 @@ const CreateBase = ({ entity, title }) => {
     sendRequest();
   };
   return (
-    <div>
-      <Button color="info" onClick={() => setIsOpen(!isOpen)}>New {title}</Button>
+    <div className="col align-self-center">
+      <Button color="success" onClick={() => setIsOpen(!isOpen)}>New {title}</Button>
       <Modal isOpen={isOpen} toggle={() => setIsOpen(!isOpen)}>
         <ModalHeader toggle={() => setIsOpen(!isOpen)}>New {title}</ModalHeader>
         <ModalBody>

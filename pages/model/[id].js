@@ -31,8 +31,12 @@ const SingleModel = () => {
         <title>Home</title>
       </Head>
       <Layout>
-        <h1 className="text-center my-3">SingleModel</h1>
-        <UpdateModel />
+        <h1 className="text-center my-3">Model details</h1>
+        <Row>
+          <Col sm={{ size: 'auto', offset: 9 }}>
+            <UpdateModel />
+          </Col>
+        </Row>
         {content ? (
           <Container>
             <Row>

@@ -38,8 +38,12 @@ const SingleCar = () => {
         <title>Home</title>
       </Head>
       <Layout>
-        <h1 className="text-center my-3">SingleCar</h1>
-        <UpdateCar />
+        <h1 className="text-center my-3">Car details</h1>
+        <Row>
+          <Col sm={{ size: 'auto', offset: 9 }}>
+            <UpdateCar />
+          </Col>
+        </Row>
         {content ? (
           <Container>
             <Row>
